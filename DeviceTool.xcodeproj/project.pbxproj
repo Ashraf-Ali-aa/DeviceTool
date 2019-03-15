@@ -66,13 +66,13 @@
 		4C22E0FD21BAE94E008C8543 /* StringHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelpers.swift; sourceTree = "<group>"; };
 		4C4575B821F1DD0B0069449D /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
 		4C4575BB21F1DFA20069449D /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		4C4C7CF521AAED1E0002127F /* ADB Assistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ADB Assistant.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C4C7CF521AAED1E0002127F /* DeviceTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeviceTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C4C7CF821AAED1E0002127F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C4C7CFA21AAED1E0002127F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4C4C7CFF21AAED1F0002127F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4C4C7D0121AAED1F0002127F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C4C7D0221AAED1F0002127F /* ADB_Assistant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ADB_Assistant.entitlements; sourceTree = "<group>"; };
-		4C4C7D0721AAED1F0002127F /* ADB AssistantTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ADB AssistantTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C4C7D0721AAED1F0002127F /* DeviceToolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeviceToolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C4C7D0B21AAED1F0002127F /* ADB_AssistantTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADB_AssistantTests.swift; sourceTree = "<group>"; };
 		4C4C7D0D21AAED1F0002127F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C4C7D1721AB2E2A0002127F /* Shell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shell.swift; sourceTree = "<group>"; };
@@ -180,8 +180,8 @@
 		4C4C7CEC21AAED1E0002127F = {
 			isa = PBXGroup;
 			children = (
-				4C4C7CF721AAED1E0002127F /* ADB Assistant */,
-				4C4C7D0A21AAED1F0002127F /* ADB AssistantTests */,
+				4C4C7CF721AAED1E0002127F /* DeviceTool */,
+				4C4C7D0A21AAED1F0002127F /* DeviceToolTests */,
 				4C4C7CF621AAED1E0002127F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -189,13 +189,13 @@
 		4C4C7CF621AAED1E0002127F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4C4C7CF521AAED1E0002127F /* ADB Assistant.app */,
-				4C4C7D0721AAED1F0002127F /* ADB AssistantTests.xctest */,
+				4C4C7CF521AAED1E0002127F /* DeviceTool.app */,
+				4C4C7D0721AAED1F0002127F /* DeviceToolTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4C4C7CF721AAED1E0002127F /* ADB Assistant */ = {
+		4C4C7CF721AAED1E0002127F /* DeviceTool */ = {
 			isa = PBXGroup;
 			children = (
 				4C1E619E220462CF00966D7B /* Components */,
@@ -208,16 +208,16 @@
 				4C4C7CF821AAED1E0002127F /* AppDelegate.swift */,
 				4C4C7CFE21AAED1F0002127F /* Main.storyboard */,
 			);
-			path = "ADB Assistant";
+			path = DeviceTool;
 			sourceTree = "<group>";
 		};
-		4C4C7D0A21AAED1F0002127F /* ADB AssistantTests */ = {
+		4C4C7D0A21AAED1F0002127F /* DeviceToolTests */ = {
 			isa = PBXGroup;
 			children = (
 				4C4C7D0B21AAED1F0002127F /* ADB_AssistantTests.swift */,
 				4C4C7D0D21AAED1F0002127F /* Info.plist */,
 			);
-			path = "ADB AssistantTests";
+			path = DeviceToolTests;
 			sourceTree = "<group>";
 		};
 		4C4C7D1621AB2E0C0002127F /* Services */ = {
@@ -313,9 +313,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4C4C7CF421AAED1E0002127F /* ADB Assistant */ = {
+		4C4C7CF421AAED1E0002127F /* DeviceTool */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4C4C7D1021AAED1F0002127F /* Build configuration list for PBXNativeTarget "ADB Assistant" */;
+			buildConfigurationList = 4C4C7D1021AAED1F0002127F /* Build configuration list for PBXNativeTarget "DeviceTool" */;
 			buildPhases = (
 				4C4C7CF121AAED1E0002127F /* Sources */,
 				4C4C7CF221AAED1E0002127F /* Frameworks */,
@@ -326,14 +326,14 @@
 			);
 			dependencies = (
 			);
-			name = "ADB Assistant";
+			name = DeviceTool;
 			productName = "ADB Assistant";
-			productReference = 4C4C7CF521AAED1E0002127F /* ADB Assistant.app */;
+			productReference = 4C4C7CF521AAED1E0002127F /* DeviceTool.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4C4C7D0621AAED1F0002127F /* ADB AssistantTests */ = {
+		4C4C7D0621AAED1F0002127F /* DeviceToolTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4C4C7D1321AAED1F0002127F /* Build configuration list for PBXNativeTarget "ADB AssistantTests" */;
+			buildConfigurationList = 4C4C7D1321AAED1F0002127F /* Build configuration list for PBXNativeTarget "DeviceToolTests" */;
 			buildPhases = (
 				4C4C7D0321AAED1F0002127F /* Sources */,
 				4C4C7D0421AAED1F0002127F /* Frameworks */,
@@ -344,9 +344,9 @@
 			dependencies = (
 				4C4C7D0921AAED1F0002127F /* PBXTargetDependency */,
 			);
-			name = "ADB AssistantTests";
+			name = DeviceToolTests;
 			productName = "ADB AssistantTests";
-			productReference = 4C4C7D0721AAED1F0002127F /* ADB AssistantTests.xctest */;
+			productReference = 4C4C7D0721AAED1F0002127F /* DeviceToolTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -373,7 +373,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4C4C7CF021AAED1E0002127F /* Build configuration list for PBXProject "ADB Assistant" */;
+			buildConfigurationList = 4C4C7CF021AAED1E0002127F /* Build configuration list for PBXProject "DeviceTool" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -386,8 +386,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4C4C7CF421AAED1E0002127F /* ADB Assistant */,
-				4C4C7D0621AAED1F0002127F /* ADB AssistantTests */,
+				4C4C7CF421AAED1E0002127F /* DeviceTool */,
+				4C4C7D0621AAED1F0002127F /* DeviceToolTests */,
 			);
 		};
 /* End PBXProject section */
@@ -483,7 +483,7 @@
 /* Begin PBXTargetDependency section */
 		4C4C7D0921AAED1F0002127F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4C4C7CF421AAED1E0002127F /* ADB Assistant */;
+			target = 4C4C7CF421AAED1E0002127F /* DeviceTool */;
 			targetProxy = 4C4C7D0821AAED1F0002127F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -670,7 +670,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "cc.ovchinnikov.ADB-AssistantTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ADB Assistant.app/Contents/MacOS/ADB Assistant";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeviceTool.app/Contents/MacOS/DeviceTool";
 			};
 			name = Debug;
 		};
@@ -691,14 +691,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "cc.ovchinnikov.ADB-AssistantTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ADB Assistant.app/Contents/MacOS/ADB Assistant";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeviceTool.app/Contents/MacOS/DeviceTool";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4C4C7CF021AAED1E0002127F /* Build configuration list for PBXProject "ADB Assistant" */ = {
+		4C4C7CF021AAED1E0002127F /* Build configuration list for PBXProject "DeviceTool" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4C4C7D0E21AAED1F0002127F /* Debug */,
@@ -707,7 +707,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4C4C7D1021AAED1F0002127F /* Build configuration list for PBXNativeTarget "ADB Assistant" */ = {
+		4C4C7D1021AAED1F0002127F /* Build configuration list for PBXNativeTarget "DeviceTool" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4C4C7D1121AAED1F0002127F /* Debug */,
@@ -716,7 +716,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4C4C7D1321AAED1F0002127F /* Build configuration list for PBXNativeTarget "ADB AssistantTests" */ = {
+		4C4C7D1321AAED1F0002127F /* Build configuration list for PBXNativeTarget "DeviceToolTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4C4C7D1421AAED1F0002127F /* Debug */,
