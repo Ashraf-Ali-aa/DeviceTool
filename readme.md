@@ -1,8 +1,8 @@
-## ADB Assistant
+## DeviceTool
 
 ![](screenshot.png)
 
-**ADB Assistant** is a macOS GUI wrapper for ADB (Android Device Bridge) comand line tool. It allows you to communicate and perform basic actions with Android device from your computer.
+**DeviceTool** is a macOS GUI wrapper for ADB (Android Device Bridge) comand line tool. It allows you to communicate and perform basic actions with Android device from your computer.
 
 Currently it provides the ability to:
 

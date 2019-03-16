@@ -1,9 +1,5 @@
 //
-//  ADBWrapper.swift
-//  ADB Assistant
-//
-//  Created by Michael Ovchinnikov on 25/11/2018.
-//  Copyright © 2018 Michael Ovchinnikov. All rights reserved.
+//  Copyright © 2019 Ashraf Ali. All rights reserved.
 //
 
 import Foundation
@@ -43,63 +39,90 @@ final class ADBWrapper: ADBWrapperType {
     }
 
     public func reboot(to: ADBRebootType, identifier: String) {
-        let command = "\(platformToolsPath)/adb -s \(identifier) reboot \(to.rawValue)"
-        _ = shell.execute(command)
+        shell.execute(
+            adbTool(deviceSerial: identifier, command: "reboot \(to.rawValue)")
+        )
     }
 
     public func takeScreenshot(identifier: String, path: String) {
-        let command = "\(platformToolsPath)/adb -s \(identifier) shell screencap -p \(path)"
-        _ = shell.execute(command)
+        shell.execute(
+            adbTool(deviceSerial: identifier, shellCommand: "screencap -p \(path)")
+        )
     }
 
     public func pull(identifier: String, fromPath: String, toPath: String) {
-        let command = "\(platformToolsPath)/adb -s \(identifier) pull \(fromPath) \(toPath)"
-        _ = shell.execute(command)
+        shell.execute(
+            adbTool(deviceSerial: identifier, command: "pull \(fromPath) \(toPath)")
+        )
     }
 
     public func remove(identifier: String, path: String) {
-        let command = "\(platformToolsPath)/adb -s \(identifier) shell rm -f \(path)"
-        _ = shell.execute(command)
+        shell.execute(
+            adbTool(deviceSerial: identifier, shellCommand: "rm -f \(path)")
+        )
     }
 
     public func wakeUpDevice(identifier: String) {
-        let command = "\(platformToolsPath)/adb -s \(identifier) shell input keyevent 82"
-        _ = shell.execute(command)
+        shell.execute(
+            adbTool(deviceSerial: identifier, shellCommand: "input keyevent 82")
+        )
     }
 
     public func installAPK(identifier: String, fromPath path: String) {
-        let command = "\(platformToolsPath)/adb -s \(identifier) install \(path)"
-        _ = shell.execute(command)
+        shell.execute(
+            adbTool(deviceSerial: identifier, command: "install \(path)")
+        )
     }
 
     private func getDeviceProps(forId identifier: String) -> [String: String] {
-        let command = "\(platformToolsPath)/adb -s \(identifier) shell getprop"
-        let output = shell.execute(command)
+        let output = shell.execute(
+            adbTool(deviceSerial: identifier, command: "getprop")
+        )
 
         return getPropsFromString(output)
     }
 
     private func getPropsFromString(_ string: String) -> [String: String] {
         guard
-            let re = try? NSRegularExpression(pattern: "\\[(.+?)\\]: \\[(.+?)\\]",
-                                              options: [])
-        else {
-            return [:]
+            let regularExpression = try? NSRegularExpression(
+                pattern: "\\[(.+?)\\]: \\[(.+?)\\]",
+                options: []
+            ) else {
+                return [:]
         }
 
-        let matches = re.matches(in: string,
-                                 options: [],
-                                 range: NSRange(location: 0,
-                                                length: string.utf16.count))
+        let matches = regularExpression.matches(
+            in: string,
+            options: [],
+            range: NSRange(location: 0, length: string.utf16.count)
+        )
 
-        var propDict = [String: String]()
+        var propertyDictionary = [String: String]()
 
         for match in matches {
-            let key = (string as NSString).substring(with: match.range(at: 1))
+            let key   = (string as NSString).substring(with: match.range(at: 1))
             let value = (string as NSString).substring(with: match.range(at: 2))
-            propDict[key] = value
+            propertyDictionary[key] = value
         }
 
-        return propDict
+        return propertyDictionary
+    }
+
+    func adbTool(deviceSerial: String, command: String) -> String {
+        return adbCommand() + "-s \(deviceSerial)" + command
+    }
+
+    func adbTool(deviceSerial: String, shellCommand: String) -> String {
+        return adbTool(deviceSerial: deviceSerial, command: "shell \(shellCommand)")
+    }
+
+    private func adbCommand() -> String {
+        let whitespace = " "
+        
+        if platformToolsPath.contains("/adb")  {
+            return platformToolsPath + whitespace
+        }
+
+        return "\(platformToolsPath)/adb" + whitespace
     }
 }

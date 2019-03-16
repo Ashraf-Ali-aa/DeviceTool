@@ -1,9 +1,5 @@
 //
-//  DragView.swift
-//  ADB Assistant
-//
-//  Created by Michael Ovchinnikov on 21/12/2018.
-//  Copyright © 2018 Michael Ovchinnikov. All rights reserved.
+//  Copyright © 2019 Ashraf Ali. All rights reserved.
 //
 
 import Cocoa

@@ -1,8 +1,5 @@
 //
-//  DeviceType.swift
-//  ADB Assistant
 //
-//  Created by Michael Ovchinnikov on 01/02/2019.
 //  Copyright © 2019 Michael Ovchinnikov. All rights reserved.
 //
 

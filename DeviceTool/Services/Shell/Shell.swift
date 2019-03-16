@@ -1,14 +1,11 @@
 //
-//  ShellTask.swift
-//  ADB Assistant
-//
-//  Created by Michael Ovchinnikov on 25/11/2018.
-//  Copyright © 2018 Michael Ovchinnikov. All rights reserved.
+//  Copyright © 2019 Ashraf Ali. All rights reserved.
 //
 
 import Foundation
 
 final class Shell: ShellType {
+    @discardableResult
     public func execute(_ command: String) -> String {
         let task = Process()
         task.launchPath = "/bin/bash"

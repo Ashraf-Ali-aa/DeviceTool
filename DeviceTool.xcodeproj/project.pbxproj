@@ -49,7 +49,7 @@
 			containerPortal = 4C4C7CED21AAED1E0002127F /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 4C4C7CF421AAED1E0002127F;
-			remoteInfo = "ADB Assistant";
+			remoteInfo = DeviceTool;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -327,7 +327,7 @@
 			dependencies = (
 			);
 			name = DeviceTool;
-			productName = "ADB Assistant";
+			productName = DeviceTool;
 			productReference = 4C4C7CF521AAED1E0002127F /* DeviceTool.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -345,7 +345,7 @@
 				4C4C7D0921AAED1F0002127F /* PBXTargetDependency */,
 			);
 			name = DeviceToolTests;
-			productName = "ADB AssistantTests";
+			productName = DeviceToolTests;
 			productReference = 4C4C7D0721AAED1F0002127F /* DeviceToolTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -622,7 +622,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 8UYYCVRH54;
-				INFOPLIST_FILE = "$(SRCROOT)/ADB Assistant/Configuration/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/DeviceTool/Configuration/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -641,7 +641,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 8UYYCVRH54;
-				INFOPLIST_FILE = "$(SRCROOT)/ADB Assistant/Configuration/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/DeviceTool/Configuration/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -661,7 +661,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 8UYYCVRH54;
-				INFOPLIST_FILE = "ADB AssistantTests/Info.plist";
+				INFOPLIST_FILE = DeviceToolTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -682,7 +682,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 8UYYCVRH54;
-				INFOPLIST_FILE = "ADB AssistantTests/Info.plist";
+				INFOPLIST_FILE = DeviceToolTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
