@@ -11,9 +11,13 @@ protocol DeviceInterface {
 
     func getDevice(forId identifier: String) -> Device
 
+    func reboot(identifier: String)
+
     func reboot(to: ADBRebootType, identifier: String)
 
     func takeScreenshot(identifier: String, path: String)
+
+    func recordVideo(identifier: String, path: String)
 
     func pull(identifier: String, fromPath: String, toPath: String)
 

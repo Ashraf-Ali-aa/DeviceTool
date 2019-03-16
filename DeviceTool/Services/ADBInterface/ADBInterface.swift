@@ -39,6 +39,12 @@ final class ADBInterface: DeviceInterface {
         return Device(identifier: identifier, properties: deviceProps)
     }
 
+    public func reboot(identifier: String) {
+        shell.execute(
+            adbTool(deviceSerial: identifier, command: "reboot")
+        )
+    }
+
     public func reboot(to: ADBRebootType, identifier: String) {
         let rebootType = to == .system ? "" : to.rawValue
         shell.execute(
@@ -49,6 +55,12 @@ final class ADBInterface: DeviceInterface {
     public func takeScreenshot(identifier: String, path: String) {
         shell.execute(
             adbTool(deviceSerial: identifier, shellCommand: "screencap -p \(path)")
+        )
+    }
+
+    public func recordVideo(identifier: String, path: String) {
+        shell.execute(
+            adbTool(deviceSerial: identifier, shellCommand: "screenrecord \(path)")
         )
     }
 
