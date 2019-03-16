@@ -20,6 +20,8 @@ final class SideBarViewModel {
 
     public func fetchDeviceList() {
         var previouslySelected: Device?
+
+        // FIXME: incorrect index
         if let index = selectedDeviceIndex.value,
             devices.value.count > index {
             previouslySelected = devices.value[index]

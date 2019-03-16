@@ -5,6 +5,10 @@
 import Foundation
 
 final class ADBWrapperMock: DeviceInterface {
+    func reboot(identifier _: String) {}
+
+    func recordVideo(identifier _: String, path _: String) {}
+
     init(shell _: ShellType, platformToolsPath _: String) {}
 
     func listDeviceIdentifiers() -> [String] {

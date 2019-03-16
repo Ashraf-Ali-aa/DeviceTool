@@ -30,7 +30,7 @@
 		4C8AEF2C21AF071700AC9202 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8AEF2B21AF071700AC9202 /* Device.swift */; };
 		4C8AEF3021B12CC100AC9202 /* SideBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8AEF2F21B12CC100AC9202 /* SideBarViewModel.swift */; };
 		4C8AEF3421B1519F00AC9202 /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8AEF3321B1519F00AC9202 /* Dynamic.swift */; };
-		4C8AEF3721B16C2A00AC9202 /* DeviceInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8AEF3621B16C2A00AC9202 /* DeviceInterface.swift */; };
+		4C8AEF3721B16C2A00AC9202 /* DeviceInterfaceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8AEF3621B16C2A00AC9202 /* DeviceInterfaceProtocol.swift */; };
 		4C8AEF3921B16CAF00AC9202 /* ADBWrapperMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8AEF3821B16CAF00AC9202 /* ADBWrapperMock.swift */; };
 		4C8AEF3F21B3CBDB00AC9202 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C8AEF3E21B3CBDB00AC9202 /* Assets.xcassets */; };
 		4C8AEF4121B3E22900AC9202 /* RebootCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8AEF4021B3E22900AC9202 /* RebootCellViewModel.swift */; };
@@ -82,7 +82,7 @@
 		4C8AEF2B21AF071700AC9202 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		4C8AEF2F21B12CC100AC9202 /* SideBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarViewModel.swift; sourceTree = "<group>"; };
 		4C8AEF3321B1519F00AC9202 /* Dynamic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
-		4C8AEF3621B16C2A00AC9202 /* DeviceInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInterface.swift; sourceTree = "<group>"; };
+		4C8AEF3621B16C2A00AC9202 /* DeviceInterfaceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInterfaceProtocol.swift; sourceTree = "<group>"; };
 		4C8AEF3821B16CAF00AC9202 /* ADBWrapperMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADBWrapperMock.swift; sourceTree = "<group>"; };
 		4C8AEF3E21B3CBDB00AC9202 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C8AEF4021B3E22900AC9202 /* RebootCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RebootCellViewModel.swift; sourceTree = "<group>"; };
@@ -224,7 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				4C4575B721F1DCF00069449D /* Routing */,
-				4C4C7D1E21AB346F0002127F /* ADBWrapper */,
+				4C4C7D1E21AB346F0002127F /* ADBInterface */,
 				4C4C7D1B21AB32C30002127F /* Shell */,
 				4C8AEF2921AC83EC00AC9202 /* USBWatcher.swift */,
 				4C22E0F921BA9D6C008C8543 /* Defaults.swift */,
@@ -237,19 +237,19 @@
 			isa = PBXGroup;
 			children = (
 				4C4C7D1721AB2E2A0002127F /* Shell.swift */,
+				4C8AEF3621B16C2A00AC9202 /* DeviceInterfaceProtocol.swift */,
 				4C4C7D1C21AB32E00002127F /* ShellType.swift */,
 			);
 			path = Shell;
 			sourceTree = "<group>";
 		};
-		4C4C7D1E21AB346F0002127F /* ADBWrapper */ = {
+		4C4C7D1E21AB346F0002127F /* ADBInterface */ = {
 			isa = PBXGroup;
 			children = (
 				4C4C7D1921AB312B0002127F /* ADBInterface.swift */,
-				4C8AEF3621B16C2A00AC9202 /* DeviceInterface.swift */,
 				4C8AEF3821B16CAF00AC9202 /* ADBWrapperMock.swift */,
 			);
-			path = ADBWrapper;
+			path = ADBInterface;
 			sourceTree = "<group>";
 		};
 		4C8AEF2821AC66E500AC9202 /* Entities */ = {
@@ -452,7 +452,7 @@
 				4C8AEF3421B1519F00AC9202 /* Dynamic.swift in Sources */,
 				4C8AEF2A21AC83EC00AC9202 /* USBWatcher.swift in Sources */,
 				4CEFBA7D21CCF05400079CD9 /* InstallAPKCellViewModel.swift in Sources */,
-				4C8AEF3721B16C2A00AC9202 /* DeviceInterface.swift in Sources */,
+				4C8AEF3721B16C2A00AC9202 /* DeviceInterfaceProtocol.swift in Sources */,
 				4C22E0FA21BA9D6C008C8543 /* Defaults.swift in Sources */,
 				4C22E0F421BA78AF008C8543 /* ScreenshotCell.swift in Sources */,
 				4C4C7CF921AAED1E0002127F /* AppDelegate.swift in Sources */,
