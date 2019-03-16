@@ -23,6 +23,7 @@ final class SideBarViewModel {
 
         // FIXME: incorrect index
         if let index = selectedDeviceIndex.value,
+            index > 0,
             devices.value.count > index {
             previouslySelected = devices.value[index]
         }

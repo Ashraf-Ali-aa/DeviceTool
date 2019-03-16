@@ -59,6 +59,12 @@ final class MainViewController: NSViewController {
         sidebarViewModel?.fetchDeviceList()
     }
 
+    override func viewDidAppear() {
+        super.viewDidAppear()
+
+        sidebarViewModel?.fetchDeviceList()
+    }
+
     // MARK: View Setup
 
     private func setupDependencies() {
@@ -214,10 +220,9 @@ extension MainViewController: USBWatcherDelegate {
     func deviceAdded(_: io_object_t) {
         // We have to introduce delay as some time is needed
         // to recognize a USB device
-//        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000)) {
-//            self.sidebarViewModel?.fetchDeviceList()
-//        }
-        sidebarViewModel?.fetchDeviceList()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000)) {
+            self.sidebarViewModel?.fetchDeviceList()
+        }
     }
 
     func deviceRemoved(_: io_object_t) {
