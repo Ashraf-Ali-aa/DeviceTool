@@ -10,7 +10,7 @@ final class ScreenshotCellViewModel: ActionCellViewModel {
 
     private let defaults: Defaults
 
-    init(adbWrapper: ADBWrapperType, settings: Defaults) {
+    init(adbWrapper: DeviceInterface, settings: Defaults) {
         defaults = settings
 
         super.init(adbWrapper: adbWrapper)

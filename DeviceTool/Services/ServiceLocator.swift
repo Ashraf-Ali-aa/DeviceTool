@@ -10,7 +10,7 @@ final class ServiceLocator {
 
     let shell = Shell()
     let defaults = Defaults()
-    let adbWrapper: ADBWrapperType
+    let adbWrapper: DeviceInterface
 
     let sidebarViewModel: SideBarViewModel
     let rebootViewModel: RebootCellViewModel
@@ -23,7 +23,7 @@ final class ServiceLocator {
 
     private init() {
         let platformToolsPath = defaults.string(forKey: .platformToolsPath) ?? ""
-        adbWrapper = ADBWrapper(shell: shell, platformToolsPath: platformToolsPath)
+        adbWrapper = ADBInterface(shell: shell, platformToolsPath: platformToolsPath)
 
         sidebarViewModel = SideBarViewModel(adbWrapper: adbWrapper)
         rebootViewModel = RebootCellViewModel(adbWrapper: adbWrapper)

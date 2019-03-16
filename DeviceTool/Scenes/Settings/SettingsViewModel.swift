@@ -22,7 +22,7 @@ final class SettingsViewModel {
     }
 
     public func isADBAvailable() -> Bool {
-        let path = "\(platformToolsPath.value ?? "")/adb"
+        let path = platformToolsPath.value ?? ""
         return FileManager.default.fileExists(atPath: path)
     }
 }

@@ -4,10 +4,10 @@
 
 import Foundation
 
-final class ADBWrapperMock: ADBWrapperType {
+final class ADBWrapperMock: DeviceInterface {
     init(shell _: ShellType, platformToolsPath _: String) {}
 
-    func listDeviceIds() -> [String] {
+    func listDeviceIdentifiers() -> [String] {
         return ["phone", "tablet", "watch", "tv", "auto"]
     }
 
@@ -27,5 +27,5 @@ final class ADBWrapperMock: ADBWrapperType {
 
     func wakeUpDevice(identifier _: String) {}
 
-    func installAPK(identifier _: String, fromPath _: String) {}
+    func installApplication(identifier _: String, fromPath _: String) {}
 }

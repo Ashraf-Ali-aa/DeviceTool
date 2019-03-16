@@ -5,11 +5,12 @@
 import Foundation
 
 enum ADBRebootType: String {
-    case bootloader, recovery
-    case system = ""
+    case bootloader
+    case recovery
+    case system
 }
 
-final class ADBWrapper: ADBWrapperType {
+final class ADBInterface: DeviceInterface {
     private let platformToolsPath: String
     private let shell: ShellType
 
@@ -18,8 +19,8 @@ final class ADBWrapper: ADBWrapperType {
         self.shell = shell
     }
 
-    public func listDeviceIds() -> [String] {
-        let command = "\(platformToolsPath)/adb devices"
+    public func listDeviceIdentifiers() -> [String] {
+        let command = "\(platformToolsPath) devices"
         let deviceIdFilter: (String) -> Bool = { line in
             if line.isEmpty { return false }
             return line
@@ -34,13 +35,14 @@ final class ADBWrapper: ADBWrapperType {
     }
 
     public func getDevice(forId identifier: String) -> Device {
-        let deviceProps = getDeviceProps(forId: identifier)
+        let deviceProps = getDeviceProperties(serial: identifier)
         return Device(identifier: identifier, properties: deviceProps)
     }
 
     public func reboot(to: ADBRebootType, identifier: String) {
+        let rebootType = to == .system ? "" : to.rawValue
         shell.execute(
-            adbTool(deviceSerial: identifier, command: "reboot \(to.rawValue)")
+            adbTool(deviceSerial: identifier, command: "reboot \(rebootType)")
         )
     }
 
@@ -68,15 +70,15 @@ final class ADBWrapper: ADBWrapperType {
         )
     }
 
-    public func installAPK(identifier: String, fromPath path: String) {
+    public func installApplication(identifier: String, fromPath path: String) {
         shell.execute(
             adbTool(deviceSerial: identifier, command: "install \(path)")
         )
     }
 
-    private func getDeviceProps(forId identifier: String) -> [String: String] {
+    private func getDeviceProperties(serial identifier: String) -> [String: String] {
         let output = shell.execute(
-            adbTool(deviceSerial: identifier, command: "getprop")
+            adbTool(deviceSerial: identifier, shellCommand: "getprop")
         )
 
         return getPropsFromString(output)
@@ -88,7 +90,7 @@ final class ADBWrapper: ADBWrapperType {
                 pattern: "\\[(.+?)\\]: \\[(.+?)\\]",
                 options: []
             ) else {
-                return [:]
+            return [:]
         }
 
         let matches = regularExpression.matches(
@@ -100,7 +102,7 @@ final class ADBWrapper: ADBWrapperType {
         var propertyDictionary = [String: String]()
 
         for match in matches {
-            let key   = (string as NSString).substring(with: match.range(at: 1))
+            let key = (string as NSString).substring(with: match.range(at: 1))
             let value = (string as NSString).substring(with: match.range(at: 2))
             propertyDictionary[key] = value
         }
@@ -108,21 +110,11 @@ final class ADBWrapper: ADBWrapperType {
         return propertyDictionary
     }
 
-    func adbTool(deviceSerial: String, command: String) -> String {
-        return adbCommand() + "-s \(deviceSerial)" + command
+    private func adbTool(deviceSerial: String, command: String) -> String {
+        return platformToolsPath + " " + "-s \(deviceSerial) " + command
     }
 
-    func adbTool(deviceSerial: String, shellCommand: String) -> String {
+    private func adbTool(deviceSerial: String, shellCommand: String) -> String {
         return adbTool(deviceSerial: deviceSerial, command: "shell \(shellCommand)")
-    }
-
-    private func adbCommand() -> String {
-        let whitespace = " "
-        
-        if platformToolsPath.contains("/adb")  {
-            return platformToolsPath + whitespace
-        }
-
-        return "\(platformToolsPath)/adb" + whitespace
     }
 }

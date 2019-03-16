@@ -10,32 +10,34 @@ enum DeviceType: String {
 
     var imageName: String {
         switch self {
-        case .phone:
-            return "icon-phone"
-        case .tablet:
-            return "icon-tablet"
-        case .watch:
-            return "icon-watch"
-        case .tv:
-            return "icon-tv"
-        case .auto:
-            return "icon-auto"
+        case .phone: return "icon-phone"
+        case .tablet: return "icon-tablet"
+        case .watch: return "icon-watch"
+        case .tv: return "icon-tv"
+        case .auto: return "icon-auto"
         }
     }
 }
 
 extension DeviceType {
     init(characteristics: String) {
-        if characteristics.range(of: "watch") != nil {
+        if characteristics.contains("watch") || characteristics.contains("iwatch") {
             self = .watch
-        } else if characteristics.range(of: "tablet") != nil {
+        } else if characteristics.contains("tablet") || characteristics.contains("ipad") {
             self = .tablet
-        } else if characteristics.range(of: "tv") != nil {
+        } else if characteristics.contains("tv") || characteristics.contains("apple tv") {
             self = .tv
-        } else if characteristics.range(of: "auto") != nil {
+        } else if characteristics.contains("auto") {
             self = .auto
         } else {
             self = .phone
         }
     }
+}
+
+enum PlatfromType: String {
+    case ios = "iOS"
+    case android = "Android"
+    case mac = "MacOS"
+    case linux = "Linux"
 }
