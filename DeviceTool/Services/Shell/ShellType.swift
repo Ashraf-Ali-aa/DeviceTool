@@ -6,5 +6,5 @@ import Foundation
 
 protocol ShellType {
     @discardableResult
-    func execute(_ command: String) -> String
+    func execute(_ command: String) -> (output: [String], error: [String], exitCode: Int32)
 }

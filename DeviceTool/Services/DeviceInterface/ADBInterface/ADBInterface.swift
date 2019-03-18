@@ -29,7 +29,7 @@ final class ADBInterface: DeviceInterface {
         }
 
         return shell.execute(command)
-            .components(separatedBy: .newlines)
+            .output
             .filter(deviceIdFilter)
             .map { $0.components(separatedBy: .whitespaces)[0] }
     }
@@ -91,7 +91,7 @@ final class ADBInterface: DeviceInterface {
     private func getDeviceProperties(serial identifier: String) -> [String: String] {
         let output = shell.execute(
             adbTool(deviceSerial: identifier, shellCommand: "getprop")
-        )
+        ).output.joined(separator: "\n")
 
         return getPropsFromString(output)
     }

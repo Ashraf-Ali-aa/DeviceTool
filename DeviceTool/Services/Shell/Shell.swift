@@ -6,23 +6,42 @@ import Foundation
 
 final class Shell: ShellType {
     @discardableResult
-    public func execute(_ command: String) -> String {
+    public func execute(_ command: String) -> (output: [String], error: [String], exitCode: Int32) {
         print(command)
-        let task = Process()
-        task.launchPath = "/bin/bash"
-        task.arguments = ["-c", command]
+        return runCommand(cmd: "/bin/bash", args: "-c", command)
+    }
 
-        let outputPipe = Pipe()
-        task.standardOutput = outputPipe
-        let file = outputPipe.fileHandleForReading
+    @discardableResult
+    private func runCommand(cmd: String, args: String...) -> (output: [String], error: [String], exitCode: Int32) {
+        var output: [String] = []
+        var error: [String] = []
+
+        let task = Process()
+        task.launchPath = cmd
+        task.arguments = args
+
+        let outpipe = Pipe()
+        task.standardOutput = outpipe
+        let errpipe = Pipe()
+        task.standardError = errpipe
 
         task.launch()
 
-        if let result = NSString(data: file.readDataToEndOfFile(),
-                                 encoding: String.Encoding.utf8.rawValue) {
-            return (result as String).trimmingCharacters(in: .whitespacesAndNewlines)
+        let outdata = outpipe.fileHandleForReading.readDataToEndOfFile()
+        if var string = String(data: outdata, encoding: .utf8) {
+            string = string.trimmingCharacters(in: .newlines)
+            output = string.components(separatedBy: "\n")
         }
 
-        return ""
+        let errdata = errpipe.fileHandleForReading.readDataToEndOfFile()
+        if var string = String(data: errdata, encoding: .utf8) {
+            string = string.trimmingCharacters(in: .newlines)
+            error = string.components(separatedBy: "\n")
+        }
+
+        task.waitUntilExit()
+        let status = task.terminationStatus
+
+        return (output, error, status)
     }
 }
