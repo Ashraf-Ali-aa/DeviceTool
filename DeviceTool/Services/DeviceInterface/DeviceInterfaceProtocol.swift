@@ -1,5 +1,5 @@
 //
-//  Copyright © 2019 Ashraf Ali. All rights reserved.
+//  Copyright © 2019 Michael Ovchinnikov. All rights reserved.
 //
 
 import Foundation
@@ -12,8 +12,6 @@ protocol DeviceInterface {
     func getDevice(forId identifier: String) -> Device
 
     func reboot(identifier: String)
-
-    func reboot(to: ADBRebootType, identifier: String)
 
     func takeScreenshot(identifier: String, path: String)
 

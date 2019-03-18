@@ -1,5 +1,4 @@
 //
-//
 //  Copyright © 2019 Michael Ovchinnikov. All rights reserved.
 //
 

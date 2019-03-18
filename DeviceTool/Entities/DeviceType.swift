@@ -41,3 +41,8 @@ enum PlatfromType: String {
     case mac = "MacOS"
     case linux = "Linux"
 }
+
+enum HardwareType: String {
+    case physical
+    case simulator
+}

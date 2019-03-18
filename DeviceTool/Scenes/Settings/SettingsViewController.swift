@@ -1,5 +1,5 @@
 //
-//  Copyright © 2019 Ashraf Ali. All rights reserved.
+//  Copyright © 2019 Michael Ovchinnikov. All rights reserved.
 //
 
 import Cocoa
