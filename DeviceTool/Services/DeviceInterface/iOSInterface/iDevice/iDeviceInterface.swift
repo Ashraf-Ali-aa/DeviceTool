@@ -18,7 +18,15 @@ final class IDeviceInterface: DeviceInterface {
     }
 
     func getDevice(forId identifier: String) -> Device {
-        return Device(identifier: identifier, properties: [:])
+        var properties = getDeviceProperties(serial: identifier)
+
+        properties["deviceName"] = properties["DeviceName"]
+        properties["model"] = properties["ProductType"]
+        properties["osVersion"] = properties["ProductVersion"]
+        properties["platform"] = PlatfromType.ios.rawValue
+        properties["hardwareType"] = HardwareType.physical.rawValue
+
+        return Device(identifier: identifier, properties: properties)
     }
 
     func reboot(identifier _: String) {}

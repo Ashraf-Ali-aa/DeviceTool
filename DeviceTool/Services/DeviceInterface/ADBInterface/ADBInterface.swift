@@ -35,8 +35,16 @@ final class ADBInterface: DeviceInterface {
     }
 
     public func getDevice(forId identifier: String) -> Device {
-        let deviceProps = getDeviceProperties(serial: identifier)
-        return Device(identifier: identifier, properties: deviceProps)
+        var properties = getDeviceProperties(serial: identifier)
+
+        properties["deviceName"] = properties["ro.product.model"]
+        properties["model"] = properties["ro.product.model"]
+        properties["osVersion"] = properties["ro.build.version.release"]
+        properties["platform"] = PlatfromType.android.rawValue
+        properties["deviceType"] = DeviceType(characteristics: properties["ro.build.characteristics"] ?? "").rawValue
+        properties["hardwareType"] = HardwareType.physical.rawValue
+
+        return Device(identifier: identifier, properties: properties)
     }
 
     public func reboot(identifier: String) {

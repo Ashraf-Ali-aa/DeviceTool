@@ -16,8 +16,8 @@ struct Device {
         self.identifier = identifier
         platform = .android
         hardwareType = .physical
-        model = properties["ro.product.model"] ?? ""
-        deviceName = properties["ro.product.model"] ?? ""
-        type = DeviceType(characteristics: properties["ro.build.characteristics"] ?? "")
+        model = properties["model"] ?? ""
+        deviceName = properties["model"] ?? ""
+        type = DeviceType(characteristics: properties["deviceType"] ?? "")
     }
 }
