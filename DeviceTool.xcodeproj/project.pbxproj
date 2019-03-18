@@ -125,8 +125,8 @@
 			isa = PBXGroup;
 			children = (
 				4CEFBA7321CCCB3100079CD9 /* InstallAPKCell */,
-				4C22E0F021BA5BC3008C8543 /* ScreenshotCell */,
 				4C22E0EB21BA559D008C8543 /* RebootCell */,
+				4C22E0F021BA5BC3008C8543 /* ScreenshotCell */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -134,8 +134,8 @@
 		4C22E0EB21BA559D008C8543 /* RebootCell */ = {
 			isa = PBXGroup;
 			children = (
-				4C22E0EC21BA56B0008C8543 /* RebootCell.xib */,
 				4C22E0EE21BA5908008C8543 /* RebootCell.swift */,
+				4C22E0EC21BA56B0008C8543 /* RebootCell.xib */,
 				4C8AEF4021B3E22900AC9202 /* RebootCellViewModel.swift */,
 			);
 			path = RebootCell;
@@ -144,8 +144,8 @@
 		4C22E0F021BA5BC3008C8543 /* ScreenshotCell */ = {
 			isa = PBXGroup;
 			children = (
-				4C22E0F121BA5BEB008C8543 /* ScreenshotCell.xib */,
 				4C22E0F321BA78AF008C8543 /* ScreenshotCell.swift */,
+				4C22E0F121BA5BEB008C8543 /* ScreenshotCell.xib */,
 				4C22E0F721BA9289008C8543 /* ScreenshotCellViewModel.swift */,
 			);
 			path = ScreenshotCell;
@@ -171,8 +171,8 @@
 		4C4575B721F1DCF00069449D /* Routing */ = {
 			isa = PBXGroup;
 			children = (
-				4C4575B821F1DD0B0069449D /* ViewControllerFactory.swift */,
 				4C4575BB21F1DFA20069449D /* Router.swift */,
+				4C4575B821F1DD0B0069449D /* ViewControllerFactory.swift */,
 			);
 			path = Routing;
 			sourceTree = "<group>";
@@ -199,12 +199,12 @@
 			isa = PBXGroup;
 			children = (
 				4C1E619E220462CF00966D7B /* Components */,
-				4C8AEF2D21B12C5E00AC9202 /* Scenes */,
+				4C22E10021BB95DE008C8543 /* Configuration */,
 				4C8AEF2821AC66E500AC9202 /* Entities */,
-				4C4C7D1621AB2E0C0002127F /* Services */,
 				4C8AEF3521B151B800AC9202 /* Helpers */,
 				4C22E0FF21BB95C1008C8543 /* Resources */,
-				4C22E10021BB95DE008C8543 /* Configuration */,
+				4C8AEF2D21B12C5E00AC9202 /* Scenes */,
+				4C4C7D1621AB2E0C0002127F /* Services */,
 				4C4C7CF821AAED1E0002127F /* AppDelegate.swift */,
 				4C4C7CFE21AAED1F0002127F /* Main.storyboard */,
 			);
@@ -223,12 +223,12 @@
 		4C4C7D1621AB2E0C0002127F /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				C30966F3223F821700E08F67 /* DeviceInterface */,
 				4C4575B721F1DCF00069449D /* Routing */,
-				4C4C7D1E21AB346F0002127F /* ADBInterface */,
 				4C4C7D1B21AB32C30002127F /* Shell */,
-				4C8AEF2921AC83EC00AC9202 /* USBWatcher.swift */,
 				4C22E0F921BA9D6C008C8543 /* Defaults.swift */,
 				4CC69B7E21F0FAA30003C92E /* ServiceLocator.swift */,
+				4C8AEF2921AC83EC00AC9202 /* USBWatcher.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -237,7 +237,6 @@
 			isa = PBXGroup;
 			children = (
 				4C4C7D1721AB2E2A0002127F /* Shell.swift */,
-				4C8AEF3621B16C2A00AC9202 /* DeviceInterfaceProtocol.swift */,
 				4C4C7D1C21AB32E00002127F /* ShellType.swift */,
 			);
 			path = Shell;
@@ -284,8 +283,8 @@
 		4C8AEF3521B151B800AC9202 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				4C8AEF3321B1519F00AC9202 /* Dynamic.swift */,
 				4C22E0FB21BAE7FD008C8543 /* DateHelpers.swift */,
+				4C8AEF3321B1519F00AC9202 /* Dynamic.swift */,
 				4C22E0FD21BAE94E008C8543 /* StringHelpers.swift */,
 			);
 			path = Helpers;
@@ -294,8 +293,8 @@
 		4CEFBA7321CCCB3100079CD9 /* InstallAPKCell */ = {
 			isa = PBXGroup;
 			children = (
-				4CEFBA7421CCCB5800079CD9 /* InstallAPKCell.xib */,
 				4CEFBA7621CCCD2A00079CD9 /* InstallAPKCell.swift */,
+				4CEFBA7421CCCB5800079CD9 /* InstallAPKCell.xib */,
 				4CEFBA7C21CCF05400079CD9 /* InstallAPKCellViewModel.swift */,
 			);
 			path = InstallAPKCell;
@@ -308,6 +307,15 @@
 				4CEFBA8121CD24D800079CD9 /* SettingsViewModel.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		C30966F3223F821700E08F67 /* DeviceInterface */ = {
+			isa = PBXGroup;
+			children = (
+				4C4C7D1E21AB346F0002127F /* ADBInterface */,
+				4C8AEF3621B16C2A00AC9202 /* DeviceInterfaceProtocol.swift */,
+			);
+			path = DeviceInterface;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -495,6 +503,7 @@
 				4C4C7CFF21AAED1F0002127F /* Base */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
