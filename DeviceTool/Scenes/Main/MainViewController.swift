@@ -62,6 +62,11 @@ final class MainViewController: NSViewController {
     override func viewDidAppear() {
         super.viewDidAppear()
 
+        setupDependencies()
+        setupSideTableView()
+        setupActionsTableView()
+        setActionsTableViewVisibility()
+
         sidebarViewModel?.fetchDeviceList()
     }
 
@@ -217,15 +222,22 @@ extension MainViewController: NSTableViewDelegate {
 // MARK: - USBWatcherDelegate
 
 extension MainViewController: USBWatcherDelegate {
-    func deviceAdded(_: io_object_t) {
-        // We have to introduce delay as some time is needed
+    func deviceAdded(_ device: io_object_t) {
+        // FIXME: We have to introduce delay as some time is needed
         // to recognize a USB device
+        let deviceName = device.name()
+
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000)) {
-            self.sidebarViewModel?.fetchDeviceList()
+            if deviceName.lowercased().contains("android") {
+                self.sidebarViewModel?.fetchDeviceList()
+            }
         }
     }
 
-    func deviceRemoved(_: io_object_t) {
-        sidebarViewModel?.fetchDeviceList()
+    func deviceRemoved(_ device: io_object_t) {
+        let deviceName = device.name()
+        if deviceName.lowercased().contains("android") {
+            sidebarViewModel?.fetchDeviceList()
+        }
     }
 }
