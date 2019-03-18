@@ -23,6 +23,8 @@ final class IOSInterface: DeviceInterface {
 
     func reboot(identifier _: String) {}
 
+    func reboot(to _: ADBRebootType, identifier _: String) {}
+
     func takeScreenshot(identifier _: String, path _: String) {}
 
     func recordVideo(identifier _: String, path _: String) {}

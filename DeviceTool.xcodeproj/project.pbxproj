@@ -99,6 +99,7 @@
 		C30966F5223F947700E08F67 /* iOSInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSInterface.swift; sourceTree = "<group>"; };
 		C309672F223F9EFA00E08F67 /* iDeviceInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iDeviceInterface.swift; sourceTree = "<group>"; };
 		C3096731223F9F6000E08F67 /* SimulatorInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorInterface.swift; sourceTree = "<group>"; };
+		C30967DC223FE26500E08F67 /* DeviceToolPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = DeviceToolPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +187,7 @@
 		4C4C7CEC21AAED1E0002127F = {
 			isa = PBXGroup;
 			children = (
+				C30967DB223FE21500E08F67 /* Playground */,
 				4C4C7CF721AAED1E0002127F /* DeviceTool */,
 				4C4C7D0A21AAED1F0002127F /* DeviceToolTests */,
 				4C4C7CF621AAED1E0002127F /* Products */,
@@ -349,6 +351,14 @@
 				C3096731223F9F6000E08F67 /* SimulatorInterface.swift */,
 			);
 			path = Simulator;
+			sourceTree = "<group>";
+		};
+		C30967DB223FE21500E08F67 /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				C30967DC223FE26500E08F67 /* DeviceToolPlayground.playground */,
+			);
+			path = Playground;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

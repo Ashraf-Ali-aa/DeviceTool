@@ -11,6 +11,8 @@ protocol DeviceInterface {
 
     func getDevice(forId identifier: String) -> Device
 
+    func reboot(to: ADBRebootType, identifier: String)
+
     func reboot(identifier: String)
 
     func takeScreenshot(identifier: String, path: String)

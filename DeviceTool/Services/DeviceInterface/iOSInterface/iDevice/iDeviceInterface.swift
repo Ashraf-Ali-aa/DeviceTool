@@ -23,6 +23,8 @@ final class IDeviceInterface: DeviceInterface {
 
     func reboot(identifier _: String) {}
 
+    func reboot(to _: ADBRebootType, identifier _: String) {}
+
     func takeScreenshot(identifier _: String, path _: String) {}
 
     func recordVideo(identifier _: String, path _: String) {}
@@ -34,4 +36,28 @@ final class IDeviceInterface: DeviceInterface {
     func wakeUpDevice(identifier _: String) {}
 
     func installApplication(identifier _: String, fromPath _: String) {}
+
+    private func getDeviceProperties(serial identifier: String) -> [String: String] {
+        let commandOutput = shell.execute(
+            ideviceInfo(deviceSerial: identifier, command: "")
+        )
+
+        guard commandOutput.exitCode != 0 else {
+            print("Error:")
+            print(commandOutput.error)
+            return [:]
+        }
+
+        let propertyDictionary = commandOutput.output.map { $0.components(separatedBy: ":") }.reduce(into: [String: String]()) { dictionary, pair in
+            if pair.count == 2 {
+                dictionary[pair[0].trim()] = pair[1].trim()
+            }
+        }
+
+        return propertyDictionary
+    }
+
+    private func ideviceInfo(deviceSerial: String, command: String) -> String {
+        return "ideviceinfo -u \(deviceSerial) \(command)"
+    }
 }
