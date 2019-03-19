@@ -12,10 +12,10 @@ final class SideBarViewModel {
         return devices.value.count
     }
 
-    private var adbWrapper: DeviceInterface
+    private var deviceInterface: DeviceInterface
 
-    init(adbWrapper: DeviceInterface) {
-        self.adbWrapper = adbWrapper
+    init(deviceInterface: DeviceInterface) {
+        self.deviceInterface = deviceInterface
     }
 
     public func fetchDeviceList() {
@@ -28,8 +28,8 @@ final class SideBarViewModel {
             previouslySelected = devices.value[index]
         }
 
-        let deviceIdentifiers = adbWrapper.listDeviceIdentifiers()
-        devices.value = deviceIdentifiers.map { adbWrapper.getDevice(forId: $0) }
+        let deviceIdentifiers = deviceInterface.listDeviceIdentifiers()
+        devices.value = deviceIdentifiers.map { deviceInterface.getDevice(forId: $0) }
 
         for (index, device) in devices.value.enumerated()
             where device.identifier == previouslySelected?.identifier {

@@ -7,9 +7,9 @@ import Foundation
 class ActionCellViewModel {
     public var currentDevice: Device?
 
-    var adbWrapper: DeviceInterface
+    var deviceInterface: DeviceInterface
 
-    init(adbWrapper: DeviceInterface) {
-        self.adbWrapper = adbWrapper
+    init(deviceInterface: DeviceInterface) {
+        self.deviceInterface = deviceInterface
     }
 }

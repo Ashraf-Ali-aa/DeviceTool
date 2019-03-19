@@ -6,10 +6,11 @@ import Foundation
 
 class Defaults {
     enum Constant: String {
-        case
-            screenshotsSavePath,
-            screenshotsShouldOpenPreview,
-            platformToolsPath
+        case screenshotsSavePath
+        case screenshotsShouldOpenPreview
+        case platformToolsPath
+        case adbPath
+        case iDevicePath
     }
 
     func setString(_ value: String, forKey key: Constant) {

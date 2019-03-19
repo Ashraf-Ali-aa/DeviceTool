@@ -10,10 +10,10 @@ final class ScreenshotCellViewModel: ActionCellViewModel {
 
     private let defaults: Defaults
 
-    init(adbWrapper: DeviceInterface, settings: Defaults) {
+    init(deviceInterface: DeviceInterface, settings: Defaults) {
         defaults = settings
 
-        super.init(adbWrapper: adbWrapper)
+        super.init(deviceInterface: deviceInterface)
 
         restoreDefaults()
     }
@@ -44,13 +44,19 @@ extension ScreenshotCellViewModel: ScreenShotCellViewModelType {
         let tempDevicePath = "/sdcard/\(filename)"
         let selectedFolder = NSString(string: savePath.value).expandingTildeInPath
 
-        adbWrapper.takeScreenshot(identifier: identifier,
-                                  path: tempDevicePath)
-        adbWrapper.pull(identifier: identifier,
-                        fromPath: tempDevicePath,
-                        toPath: selectedFolder)
-        adbWrapper.remove(identifier: identifier,
-                          path: tempDevicePath)
+        deviceInterface.takeScreenshot(
+            identifier: identifier,
+            path: tempDevicePath
+        )
+        deviceInterface.pull(
+            identifier: identifier,
+            fromPath: tempDevicePath,
+            toPath: selectedFolder
+        )
+        deviceInterface.remove(
+            identifier: identifier,
+            path: tempDevicePath
+        )
 
         if shouldOpenPreview.value {
             let localSreenshotPath = "\(selectedFolder)/\(filename)"

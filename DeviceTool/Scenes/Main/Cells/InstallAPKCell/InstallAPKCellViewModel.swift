@@ -15,6 +15,6 @@ extension InstallAPKCellViewModel: InstallAPKCellViewModelType {
             return
         }
 
-        adbWrapper.installApplication(identifier: identifier, fromPath: path)
+        deviceInterface.installApplication(identifier: identifier, fromPath: path)
     }
 }

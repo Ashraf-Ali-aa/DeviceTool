@@ -59,17 +59,6 @@ final class MainViewController: NSViewController {
         sidebarViewModel?.fetchDeviceList()
     }
 
-    override func viewDidAppear() {
-        super.viewDidAppear()
-
-        setupDependencies()
-        setupSideTableView()
-        setupActionsTableView()
-        setActionsTableViewVisibility()
-
-        sidebarViewModel?.fetchDeviceList()
-    }
-
     // MARK: View Setup
 
     private func setupDependencies() {
