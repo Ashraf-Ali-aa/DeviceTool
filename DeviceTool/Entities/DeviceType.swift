@@ -40,9 +40,39 @@ enum PlatfromType: String {
     case android = "Android"
     case mac = "MacOS"
     case linux = "Linux"
+    case unknown = "Unknown"
+
+    init(characteristics: String) {
+        if characteristics.contains("iOS") {
+            self = .ios
+        } else if characteristics.contains("Android") {
+            self = .android
+        } else if characteristics.contains("MacOS") {
+            self = .mac
+        } else if characteristics.contains("Linux") {
+            self = .linux
+        } else {
+            self = .unknown
+        }
+    }
 }
 
 enum HardwareType: String {
     case physical
     case simulator
+
+    init(characteristics: String) {
+        if characteristics.contains("physical") {
+            self = .physical
+        } else {
+            self = .simulator
+        }
+    }
+}
+
+enum DeviceState: String {
+    case online
+    case offline
+    case busy
+    case error
 }

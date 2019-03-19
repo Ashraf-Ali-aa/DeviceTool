@@ -56,9 +56,10 @@ final class IDeviceInterface: DeviceInterface {
             return [:]
         }
 
-        let propertyDictionary = commandOutput.output.map { $0.components(separatedBy: ":") }.reduce(into: [String: String]()) { dictionary, pair in
+        let propertyDictionary = commandOutput.output.map { $0.components(separatedBy: ":") }.filter { !$0[0].isEmpty }.reduce(into: [String: String]()) { dictionary, pair in
             if pair.count == 2 {
-                dictionary[pair[0].trim()] = pair[1].trim()
+                let value = pair.map { $0.trimmingCharacters(in: .whitespaces) }
+                dictionary[value[0]] = value[1]
             }
         }
 
