@@ -21,8 +21,7 @@ final class ServiceLocator {
     let router: Router
 
     private init() {
-        let adbPath = defaults.string(forKey: .platformToolsPath) ?? ""
-        deviceInterface = ADBInterface(shell: shell, platformToolsPath: adbPath)
+        deviceInterface = ADBInterface(shell: shell)
 
         sidebarViewModel = SideBarViewModel(deviceInterface: deviceInterface)
         rebootViewModel = RebootCellViewModel(deviceInterface: deviceInterface)

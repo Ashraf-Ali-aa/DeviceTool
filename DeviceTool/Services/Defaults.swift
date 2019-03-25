@@ -11,6 +11,8 @@ class Defaults {
         case platformToolsPath
         case adbPath
         case iDevicePath
+        case simlatorControl
+        case cfgUtility
     }
 
     func setString(_ value: String, forKey key: Constant) {

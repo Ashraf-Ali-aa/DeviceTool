@@ -5,7 +5,7 @@
 import Foundation
 
 protocol DeviceInterface {
-    init(shell: ShellType, platformToolsPath: String)
+    init(shell: ShellType)
 
     func listDeviceIdentifiers() -> [String]
 

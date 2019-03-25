@@ -4,13 +4,14 @@
 
 import Foundation
 
-struct Device {
+public struct Device {
     var identifier: String
 
     var deviceName: String
     var brand: DeviceBrand
     var model: String
     var manufacturer: String
+    var osVersion: String
     var type: DeviceType
 
     var properties: [String: String]
@@ -19,20 +20,40 @@ struct Device {
     var platform: PlatfromType?
     var resolution: (width: Double, height: Double)?
     var state: DeviceState
+    var deviceInterface: DeviceInterfaceController
 
-    init(identifier: String, properties: [String: String]) {
+    init(
+        identifier: String,
+        type: DeviceType,
+        deviceInterface: DeviceInterfaceController,
+        deviceName: String? = nil,
+        brand: DeviceBrand? = nil,
+        model: String? = nil,
+        osVersion: String? = nil,
+        manufacturer: String? = nil,
+
+        properties: [String: String]?,
+        firstBoot: TimeInterval? = nil,
+        hardwareType: HardwareType? = nil,
+        platform: PlatfromType? = nil,
+        resolution: (width: Double, height: Double)? = nil,
+        state: DeviceState? = nil
+
+    ) {
         self.identifier = identifier
-
-        deviceName = properties["model"] ?? ""
-        brand = DeviceBrand(rawValue: properties["ro.product.brand"] ?? "") ?? .other
-        model = properties["model"] ?? ""
-        manufacturer = properties["ro.product.manufacturer"] ?? ""
-        type = DeviceType(characteristics: properties["deviceType"] ?? "")
-
-        self.properties = properties
-        hardwareType = HardwareType(characteristics: properties["hardwareType"] ?? "")
-        platform = PlatfromType(characteristics: properties["platform"] ?? "")
-        state = .online
+        self.type = type
+        self.deviceInterface = deviceInterface
+        self.deviceName = deviceName ?? ""
+        self.brand = brand ?? .other
+        self.model = model ?? ""
+        self.osVersion = osVersion ?? ""
+        self.manufacturer = manufacturer ?? ""
+        self.properties = properties ?? [:]
+        self.firstBoot = firstBoot ?? 0.0
+        self.hardwareType = hardwareType ?? .physical
+        self.platform = platform ?? .unknown
+        self.resolution = resolution ?? (0.0, 0.0)
+        self.state = state ?? .unknown
     }
 }
 

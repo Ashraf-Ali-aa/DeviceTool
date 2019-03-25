@@ -5,11 +5,10 @@
 import Foundation
 
 final class SimulatorInterface: DeviceInterface {
-    private let platformToolsPath: String
     private let shell: ShellType
+    private let platformToolsPath = Defaults().string(forKey: .platformToolsPath) ?? ""
 
-    init(shell: ShellType, platformToolsPath: String) {
-        self.platformToolsPath = platformToolsPath
+    init(shell: ShellType) {
         self.shell = shell
     }
 
@@ -18,7 +17,7 @@ final class SimulatorInterface: DeviceInterface {
     }
 
     func getDevice(forId identifier: String) -> Device {
-        return Device(identifier: identifier, properties: [:])
+        return Device(identifier: identifier, type: .phone, deviceInterface: .simlatorControl, properties: [:])
     }
 
     func reboot(identifier _: String) {}

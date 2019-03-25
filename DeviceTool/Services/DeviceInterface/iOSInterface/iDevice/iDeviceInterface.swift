@@ -5,11 +5,10 @@
 import Foundation
 
 final class IDeviceInterface: DeviceInterface {
-    private let platformToolsPath: String
     private let shell: ShellType
+    private let platformToolsPath = Defaults().string(forKey: .platformToolsPath) ?? ""
 
-    init(shell: ShellType, platformToolsPath: String) {
-        self.platformToolsPath = platformToolsPath
+    init(shell: ShellType) {
         self.shell = shell
     }
 
@@ -26,7 +25,17 @@ final class IDeviceInterface: DeviceInterface {
         properties["platform"] = PlatfromType.ios.rawValue
         properties["hardwareType"] = HardwareType.physical.rawValue
 
-        return Device(identifier: identifier, properties: properties)
+        return Device(
+            identifier: identifier,
+            type: DeviceType(characteristics: properties["ro.build.characteristics"] ?? ""),
+            deviceInterface: .iDevice,
+            deviceName: properties["ro.product.model"],
+            model: properties["ro.product.model"],
+            osVersion: properties["ro.build.version.release"],
+            properties: properties,
+            hardwareType: .physical,
+            platform: .ios
+        )
     }
 
     func reboot(identifier _: String) {}

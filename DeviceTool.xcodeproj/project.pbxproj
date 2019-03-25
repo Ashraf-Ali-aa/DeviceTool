@@ -41,9 +41,9 @@
 		4CEFBA7D21CCF05400079CD9 /* InstallAPKCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEFBA7C21CCF05400079CD9 /* InstallAPKCellViewModel.swift */; };
 		4CEFBA8021CD0F8200079CD9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEFBA7F21CD0F8200079CD9 /* SettingsViewController.swift */; };
 		4CEFBA8221CD24D800079CD9 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEFBA8121CD24D800079CD9 /* SettingsViewModel.swift */; };
-		C30966F6223F947700E08F67 /* iOSInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30966F5223F947700E08F67 /* iOSInterface.swift */; };
 		C3096730223F9EFA00E08F67 /* iDeviceInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C309672F223F9EFA00E08F67 /* iDeviceInterface.swift */; };
 		C3096732223F9F6000E08F67 /* SimulatorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3096731223F9F6000E08F67 /* SimulatorInterface.swift */; };
+		C382501522491B1700BF6067 /* DeviceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C382501422491B1700BF6067 /* DeviceController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,10 +96,10 @@
 		4CEFBA7C21CCF05400079CD9 /* InstallAPKCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallAPKCellViewModel.swift; sourceTree = "<group>"; };
 		4CEFBA7F21CD0F8200079CD9 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4CEFBA8121CD24D800079CD9 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
-		C30966F5223F947700E08F67 /* iOSInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSInterface.swift; sourceTree = "<group>"; };
 		C309672F223F9EFA00E08F67 /* iDeviceInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iDeviceInterface.swift; sourceTree = "<group>"; };
 		C3096731223F9F6000E08F67 /* SimulatorInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorInterface.swift; sourceTree = "<group>"; };
 		C30967DC223FE26500E08F67 /* DeviceToolPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = DeviceToolPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		C382501422491B1700BF6067 /* DeviceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -323,6 +323,7 @@
 				C30966F4223F941200E08F67 /* iOSInterface */,
 				4C4C7D1E21AB346F0002127F /* ADBInterface */,
 				4C8AEF3621B16C2A00AC9202 /* DeviceInterfaceProtocol.swift */,
+				C382501422491B1700BF6067 /* DeviceController.swift */,
 			);
 			path = DeviceInterface;
 			sourceTree = "<group>";
@@ -332,7 +333,6 @@
 			children = (
 				C30966F8223F99F900E08F67 /* Simulator */,
 				C30966F7223F96E900E08F67 /* iDevice */,
-				C30966F5223F947700E08F67 /* iOSInterface.swift */,
 			);
 			path = iOSInterface;
 			sourceTree = "<group>";
@@ -495,6 +495,7 @@
 				4CEFBA7721CCCD2A00079CD9 /* InstallAPKCell.swift in Sources */,
 				4C8AEF4121B3E22900AC9202 /* RebootCellViewModel.swift in Sources */,
 				4C4575BC21F1DFA20069449D /* Router.swift in Sources */,
+				C382501522491B1700BF6067 /* DeviceController.swift in Sources */,
 				C3096730223F9EFA00E08F67 /* iDeviceInterface.swift in Sources */,
 				4C4C7CFB21AAED1E0002127F /* MainViewController.swift in Sources */,
 				4C4575B921F1DD0B0069449D /* ViewControllerFactory.swift in Sources */,
@@ -508,7 +509,6 @@
 				4C8AEF3721B16C2A00AC9202 /* DeviceInterfaceProtocol.swift in Sources */,
 				4C22E0FA21BA9D6C008C8543 /* Defaults.swift in Sources */,
 				4C22E0F421BA78AF008C8543 /* ScreenshotCell.swift in Sources */,
-				C30966F6223F947700E08F67 /* iOSInterface.swift in Sources */,
 				4C4C7CF921AAED1E0002127F /* AppDelegate.swift in Sources */,
 				4C1E61A02204685A00966D7B /* DeviceType.swift in Sources */,
 				4CEFBA8021CD0F8200079CD9 /* SettingsViewController.swift in Sources */,

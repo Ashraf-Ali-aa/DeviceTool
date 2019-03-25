@@ -75,4 +75,12 @@ enum DeviceState: String {
     case offline
     case busy
     case error
+    case unknown
+}
+
+enum DeviceInterfaceController {
+    case adb
+    case iDevice
+    case simlatorControl
+    case cfgUtility
 }

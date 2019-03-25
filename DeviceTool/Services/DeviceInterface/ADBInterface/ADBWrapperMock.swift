@@ -9,14 +9,14 @@ final class ADBWrapperMock: DeviceInterface {
 
     func recordVideo(identifier _: String, path _: String) {}
 
-    init(shell _: ShellType, platformToolsPath _: String) {}
+    init(shell _: ShellType) {}
 
     func listDeviceIdentifiers() -> [String] {
         return ["phone", "tablet", "watch", "tv", "auto"]
     }
 
     func getDevice(forId identifier: String) -> Device {
-        return Device(identifier: identifier, properties: [
+        return Device(identifier: identifier, type: .phone, deviceInterface: .adb, properties: [
             "ro.product.model": identifier,
             "ro.build.characteristics": identifier,
         ])

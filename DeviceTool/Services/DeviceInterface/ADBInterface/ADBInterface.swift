@@ -11,11 +11,10 @@ enum ADBRebootType: String {
 }
 
 final class ADBInterface: DeviceInterface {
-    private let platformToolsPath: String
     private let shell: ShellType
+    private let platformToolsPath = Defaults().string(forKey: .platformToolsPath) ?? ""
 
-    init(shell: ShellType, platformToolsPath: String) {
-        self.platformToolsPath = platformToolsPath
+    init(shell: ShellType) {
         self.shell = shell
     }
 
@@ -37,14 +36,16 @@ final class ADBInterface: DeviceInterface {
     public func getDevice(forId identifier: String) -> Device {
         var properties = getDeviceProperties(serial: identifier)
 
-        properties["deviceName"] = properties["ro.product.model"]
-        properties["model"] = properties["ro.product.model"]
-        properties["osVersion"] = properties["ro.build.version.release"]
-        properties["platform"] = PlatfromType.android.rawValue
-        properties["deviceType"] = DeviceType(characteristics: properties["ro.build.characteristics"] ?? "").rawValue
-        properties["hardwareType"] = HardwareType.physical.rawValue
-
-        return Device(identifier: identifier, properties: properties)
+        return Device(
+            identifier: identifier,
+            type: DeviceType(characteristics: properties["ro.build.characteristics"] ?? ""),
+            deviceInterface: .adb,
+            deviceName: properties["ro.product.model"],
+            model: properties["ro.product.model"],
+            osVersion: properties["ro.build.version.release"],
+            properties: properties,
+            hardwareType: .physical
+        )
     }
 
     public func reboot(identifier: String) {
