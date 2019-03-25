@@ -19,19 +19,13 @@ final class IDeviceInterface: DeviceInterface {
     func getDevice(forId identifier: String) -> Device {
         var properties = getDeviceProperties(serial: identifier)
 
-        properties["deviceName"] = properties["DeviceName"]
-        properties["model"] = properties["ProductType"]
-        properties["osVersion"] = properties["ProductVersion"]
-        properties["platform"] = PlatfromType.ios.rawValue
-        properties["hardwareType"] = HardwareType.physical.rawValue
-
         return Device(
             identifier: identifier,
-            type: DeviceType(characteristics: properties["ro.build.characteristics"] ?? ""),
+            type: DeviceType(characteristics: properties["DeviceClass"] ?? ""),
             deviceInterface: .iDevice,
-            deviceName: properties["ro.product.model"],
-            model: properties["ro.product.model"],
-            osVersion: properties["ro.build.version.release"],
+            deviceName: properties["DeviceName"],
+            model: properties["ProductType"],
+            osVersion: properties["ProductVersion"],
             properties: properties,
             hardwareType: .physical,
             platform: .ios
@@ -59,7 +53,7 @@ final class IDeviceInterface: DeviceInterface {
             ideviceInfo(deviceSerial: identifier, command: "")
         )
 
-        guard commandOutput.exitCode != 0 else {
+        guard commandOutput.exitCode == 0 else {
             print("Error:")
             print(commandOutput.error)
             return [:]

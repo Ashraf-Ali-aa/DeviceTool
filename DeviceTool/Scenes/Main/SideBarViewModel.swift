@@ -13,6 +13,7 @@ final class SideBarViewModel {
     }
 
     private var deviceInterface: DeviceInterface
+    private let deviceControl = DeviceController()
 
     init(deviceInterface: DeviceInterface) {
         self.deviceInterface = deviceInterface
@@ -28,8 +29,7 @@ final class SideBarViewModel {
             previouslySelected = devices.value[index]
         }
 
-        let deviceIdentifiers = deviceInterface.listDeviceIdentifiers()
-        devices.value = deviceIdentifiers.map { deviceInterface.getDevice(forId: $0) }
+        devices.value = deviceControl.getAllConnectedDevices()
 
         for (index, device) in devices.value.enumerated()
             where device.identifier == previouslySelected?.identifier {

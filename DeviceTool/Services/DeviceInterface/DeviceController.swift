@@ -12,7 +12,7 @@ public class DeviceController: NSObject {
         var deviceList = [Device]()
 
         deviceList += getAllIOSDevices()
-        deviceList += getAllIOSSimulator()
+//        deviceList += getAllIOSSimulator()
         deviceList += getAllAndroidDevices()
 
         return deviceList
