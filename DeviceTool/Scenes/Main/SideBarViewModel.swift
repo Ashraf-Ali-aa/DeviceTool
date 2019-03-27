@@ -12,11 +12,10 @@ final class SideBarViewModel {
         return devices.value.count
     }
 
-    private var deviceInterface: DeviceInterface
-    private let deviceControl = DeviceController()
+    private var deviceController: DeviceController
 
-    init(deviceInterface: DeviceInterface) {
-        self.deviceInterface = deviceInterface
+    init(deviceController: DeviceController) {
+        self.deviceController = deviceController
     }
 
     public func fetchDeviceList() {
@@ -29,7 +28,7 @@ final class SideBarViewModel {
             previouslySelected = devices.value[index]
         }
 
-        devices.value = deviceControl.getAllConnectedDevices()
+        devices.value = deviceController.getAllConnectedDevices()
 
         for (index, device) in devices.value.enumerated()
             where device.identifier == previouslySelected?.identifier {

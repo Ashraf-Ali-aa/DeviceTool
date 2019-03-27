@@ -262,7 +262,6 @@
 		4C8AEF2821AC66E500AC9202 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				4C22E0F521BA81EF008C8543 /* ActionCellViewModel.swift */,
 				4C8AEF2B21AF071700AC9202 /* Device.swift */,
 				4C1E619F2204685A00966D7B /* DeviceType.swift */,
 			);
@@ -323,6 +322,7 @@
 				C30966F4223F941200E08F67 /* iOSInterface */,
 				4C4C7D1E21AB346F0002127F /* ADBInterface */,
 				4C8AEF3621B16C2A00AC9202 /* DeviceInterfaceProtocol.swift */,
+				4C22E0F521BA81EF008C8543 /* ActionCellViewModel.swift */,
 				C382501422491B1700BF6067 /* DeviceController.swift */,
 			);
 			path = DeviceInterface;

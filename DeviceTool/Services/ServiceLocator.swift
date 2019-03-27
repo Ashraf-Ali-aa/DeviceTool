@@ -9,7 +9,7 @@ final class ServiceLocator {
 
     let shell = Shell()
     let defaults = Defaults()
-    let deviceInterface: DeviceInterface
+    let deviceController: DeviceController
 
     let sidebarViewModel: SideBarViewModel
     let rebootViewModel: RebootCellViewModel
@@ -21,12 +21,12 @@ final class ServiceLocator {
     let router: Router
 
     private init() {
-        deviceInterface = ADBInterface(shell: shell)
+        deviceController = DeviceController()
 
-        sidebarViewModel = SideBarViewModel(deviceInterface: deviceInterface)
-        rebootViewModel = RebootCellViewModel(deviceInterface: deviceInterface)
-        screenshotViewModel = ScreenshotCellViewModel(deviceInterface: deviceInterface, settings: defaults)
-        installAPKViewModel = InstallAPKCellViewModel(deviceInterface: deviceInterface)
+        sidebarViewModel = SideBarViewModel(deviceController: deviceController)
+        rebootViewModel = RebootCellViewModel()
+        screenshotViewModel = ScreenshotCellViewModel(settings: defaults)
+        installAPKViewModel = InstallAPKCellViewModel()
         settingsViewModel = SettingsViewModel(settings: defaults)
 
         let storyboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: nil)

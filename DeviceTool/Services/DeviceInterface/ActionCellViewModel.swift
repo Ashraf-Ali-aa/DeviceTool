@@ -6,10 +6,5 @@ import Foundation
 
 class ActionCellViewModel {
     public var currentDevice: Device?
-
-    var deviceInterface: DeviceInterface
-
-    init(deviceInterface: DeviceInterface) {
-        self.deviceInterface = deviceInterface
-    }
+    public var deviceInterface: DeviceInterface?
 }

@@ -24,6 +24,7 @@ final class MainViewController: NSViewController {
     var rebootViewModel: RebootCellViewModel?
     var screenshotViewModel: ScreenshotCellViewModel?
     var installAPKViewModel: InstallAPKCellViewModel?
+    var deviceController: DeviceController?
     var usbWatcher: USBWatcher?
 
     // MARK: IB Bindings
@@ -66,6 +67,7 @@ final class MainViewController: NSViewController {
         rebootViewModel = ServiceLocator.shared.rebootViewModel
         screenshotViewModel = ServiceLocator.shared.screenshotViewModel
         installAPKViewModel = ServiceLocator.shared.installAPKViewModel
+        deviceController = ServiceLocator.shared.deviceController
 
         bindSidebarViewModel()
 
@@ -86,6 +88,10 @@ final class MainViewController: NSViewController {
             self?.rebootViewModel?.currentDevice = device
             self?.screenshotViewModel?.currentDevice = device
             self?.installAPKViewModel?.currentDevice = device
+
+            self?.rebootViewModel?.deviceInterface = self?.deviceController?.getDevice(interface: device.deviceInterface)
+            self?.screenshotViewModel?.deviceInterface = self?.deviceController?.getDevice(interface: device.deviceInterface)
+            self?.installAPKViewModel?.deviceInterface = self?.deviceController?.getDevice(interface: device.deviceInterface)
         }
     }
 
