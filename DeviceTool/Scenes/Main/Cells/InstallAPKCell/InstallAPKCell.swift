@@ -17,7 +17,7 @@ final class InstallAPKCell: NSTableCellView {
         super.awakeFromNib()
 
         dragView.delegate = self
-        dragView.acceptedFileExtensions = ["apk"]
+        dragView.acceptedFileExtensions = ["apk", "ipa"]
     }
 }
 

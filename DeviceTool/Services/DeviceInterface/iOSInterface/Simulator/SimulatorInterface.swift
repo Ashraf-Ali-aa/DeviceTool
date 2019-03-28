@@ -17,7 +17,22 @@ final class SimulatorInterface: DeviceInterface {
     }
 
     func getDevice(forId identifier: String) -> Device {
-        return Device(identifier: identifier, type: .phone, deviceInterface: .simlatorControl, properties: [:])
+        return Device(
+            identifier: identifier,
+            type: .phone,
+            deviceInterface: .simlatorControl,
+            deviceName: "",
+            brand: .apple,
+            model: "",
+            osVersion: "",
+            manufacturer: "",
+            properties: [:],
+            firstBoot: 0,
+            hardwareType: .simulator,
+            platform: .ios,
+            resolution: (0, 0),
+            state: .unknown
+        )
     }
 
     func reboot(identifier _: String) {}

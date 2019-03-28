@@ -26,18 +26,18 @@ public struct Device {
         identifier: String,
         type: DeviceType,
         deviceInterface: DeviceInterfaceController,
-        deviceName: String? = nil,
-        brand: DeviceBrand? = nil,
-        model: String? = nil,
-        osVersion: String? = nil,
-        manufacturer: String? = nil,
+        deviceName: String?,
+        brand: DeviceBrand?,
+        model: String?,
+        osVersion: String?,
+        manufacturer: String?,
 
         properties: [String: String]?,
-        firstBoot: TimeInterval? = nil,
-        hardwareType: HardwareType? = nil,
-        platform: PlatfromType? = nil,
-        resolution: (width: Double, height: Double)? = nil,
-        state: DeviceState? = nil
+        firstBoot: TimeInterval?,
+        hardwareType: HardwareType?,
+        platform: PlatfromType?,
+        resolution: (width: Double, height: Double)?,
+        state: DeviceState?
 
     ) {
         self.identifier = identifier

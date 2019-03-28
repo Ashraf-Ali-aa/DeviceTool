@@ -220,21 +220,18 @@ extension MainViewController: NSTableViewDelegate {
 // MARK: - USBWatcherDelegate
 
 extension MainViewController: USBWatcherDelegate {
-    func deviceAdded(_ device: io_object_t) {
+    func deviceAdded(device: io_object_t) {
         // FIXME: We have to introduce delay as some time is needed
         // to recognize a USB device
-        let deviceName = device.name()
-
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000)) {
-            if deviceName.lowercased().contains("android") {
+            if device.isSupported() {
                 self.sidebarViewModel?.fetchDeviceList()
             }
         }
     }
 
-    func deviceRemoved(_ device: io_object_t) {
-        let deviceName = device.name()
-        if deviceName.lowercased().contains("android") {
+    func deviceRemoved(device: io_object_t) {
+        if device.isSupported() {
             sidebarViewModel?.fetchDeviceList()
         }
     }

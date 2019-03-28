@@ -16,10 +16,25 @@ final class ADBWrapperMock: DeviceInterface {
     }
 
     func getDevice(forId identifier: String) -> Device {
-        return Device(identifier: identifier, type: .phone, deviceInterface: .adb, properties: [
-            "ro.product.model": identifier,
-            "ro.build.characteristics": identifier,
-        ])
+        return Device(
+            identifier: identifier,
+            type: .phone,
+            deviceInterface: .adb,
+            deviceName: "",
+            brand: .samsung,
+            model: "",
+            osVersion: "",
+            manufacturer: "",
+            properties: [
+                "ro.product.model": identifier,
+                "ro.build.characteristics": identifier,
+            ],
+            firstBoot: 0,
+            hardwareType: .simulator,
+            platform: .android,
+            resolution: (0, 0),
+            state: .unknown
+        )
     }
 
     public func reboot(to _: ADBRebootType, identifier _: String) {}

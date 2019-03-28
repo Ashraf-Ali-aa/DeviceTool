@@ -13,7 +13,8 @@ final class IDeviceInterface: DeviceInterface {
     }
 
     func listDeviceIdentifiers() -> [String] {
-        return shell.execute("idevice_id -l").output
+        print(shell.execute("idevice_id -l").output.filter({ !$0.isEmpty }))
+        return shell.execute("idevice_id -l").output.filter({ !$0.isEmpty })
     }
 
     func getDevice(forId identifier: String) -> Device {
@@ -24,11 +25,16 @@ final class IDeviceInterface: DeviceInterface {
             type: DeviceType(characteristics: properties["DeviceClass"] ?? ""),
             deviceInterface: .iDevice,
             deviceName: properties["DeviceName"],
+            brand: .apple,
             model: properties["ProductType"],
             osVersion: properties["ProductVersion"],
+            manufacturer: "apple",
             properties: properties,
+            firstBoot: 0,
             hardwareType: .physical,
-            platform: .ios
+            platform: .ios,
+            resolution: (0, 0),
+            state: .unknown
         )
     }
 
@@ -56,7 +62,11 @@ final class IDeviceInterface: DeviceInterface {
 
     func wakeUpDevice(identifier _: String) {}
 
-    func installApplication(identifier _: String, fromPath _: String) {}
+    func installApplication(identifier: String, fromPath: String) {
+        shell.execute(
+            ideviceinstaller(deviceSerial: identifier, command: "-i \(fromPath)")
+        )
+    }
 
     private func getDeviceProperties(serial identifier: String) -> [String: String] {
         let commandOutput = shell.execute(
@@ -85,5 +95,9 @@ final class IDeviceInterface: DeviceInterface {
 
     private func idevicescreenshot(deviceSerial: String, command: String) -> String {
         return "idevicescreenshot -u \(deviceSerial) " + command
+    }
+
+    private func ideviceinstaller(deviceSerial: String, command: String) -> String {
+        return "ideviceinstaller -u \(deviceSerial) " + command
     }
 }

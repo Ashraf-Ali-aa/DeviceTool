@@ -8,10 +8,10 @@ import IOKit.usb
 
 public protocol USBWatcherDelegate: class {
     /// Called on the main thread when a device is connected.
-    func deviceAdded(_ device: io_object_t)
+    func deviceAdded(device: io_object_t)
 
     /// Called on the main thread when a device is disconnected.
-    func deviceRemoved(_ device: io_object_t)
+    func deviceRemoved(device: io_object_t)
 }
 
 /// An object which observes USB devices added and removed from the system.
@@ -84,5 +84,11 @@ extension io_object_t {
             }
             return "Unknown"
         }
+    }
+
+    func isSupported() -> Bool {
+        let supportedPlatforms = ["andoird", "ios", "ipad", "iphone"]
+
+        return supportedPlatforms.contains(name().lowercased())
     }
 }

@@ -41,10 +41,16 @@ final class ADBInterface: DeviceInterface {
             type: DeviceType(characteristics: properties["ro.build.characteristics"] ?? ""),
             deviceInterface: .adb,
             deviceName: properties["ro.product.model"],
+            brand: DeviceBrand(rawValue: properties["ro.product.brand"] ?? ""),
             model: properties["ro.product.model"],
             osVersion: properties["ro.build.version.release"],
+            manufacturer: properties["ro.product.model"],
             properties: properties,
-            hardwareType: .physical
+            firstBoot: 0,
+            hardwareType: .physical,
+            platform: .android,
+            resolution: (0, 0),
+            state: .unknown
         )
     }
 
