@@ -85,6 +85,9 @@ final class MainViewController: NSViewController {
             self?.sideTableView.selectRowIndexes([i], byExtendingSelection: false)
 
             guard let device = self?.sidebarViewModel?.devices.value[i] else { return }
+
+            print("Selected: \(device.deviceName) - \(device.osVersion)")
+
             self?.rebootViewModel?.currentDevice = device
             self?.screenshotViewModel?.currentDevice = device
             self?.installAPKViewModel?.currentDevice = device

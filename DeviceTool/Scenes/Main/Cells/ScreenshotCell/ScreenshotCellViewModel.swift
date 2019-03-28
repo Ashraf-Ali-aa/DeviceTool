@@ -32,30 +32,21 @@ final class ScreenshotCellViewModel: ActionCellViewModel {
 extension ScreenshotCellViewModel: ScreenShotCellViewModelType {
     public func takeScreenshot() {
         guard
+            let platform = self.currentDevice?.platform,
             let identifier = self.currentDevice?.identifier,
-            let deviceModel = self.currentDevice?.model
-        else {
+            let deviceModel = self.currentDevice?.model else {
             return
         }
 
         let modelName = deviceModel.toFilenameString()
-        let date = Date().toFilenameString()
-        let filename = "\(modelName)-\(date).png"
-        let tempDevicePath = "/sdcard/\(filename)"
+        let filename = "\(modelName)-\(Date().toFilenameString()).png"
+        let filePath = platform == .android ? "/sdcard/\(filename)" : "/\(filename)"
         let selectedFolder = NSString(string: savePath.value).expandingTildeInPath
 
         deviceInterface?.takeScreenshot(
             identifier: identifier,
-            path: tempDevicePath
-        )
-        deviceInterface?.pull(
-            identifier: identifier,
-            fromPath: tempDevicePath,
-            toPath: selectedFolder
-        )
-        deviceInterface?.remove(
-            identifier: identifier,
-            path: tempDevicePath
+            outputFolder: selectedFolder,
+            fileName: filePath
         )
 
         if shouldOpenPreview.value {

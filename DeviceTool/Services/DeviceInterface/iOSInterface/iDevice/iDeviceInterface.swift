@@ -36,8 +36,16 @@ final class IDeviceInterface: DeviceInterface {
 
     func reboot(to _: ADBRebootType, identifier _: String) {}
 
-    func takeScreenshot(identifier _: String, path _: String) {
-        print("hello")
+    func takeScreenshot(identifier: String, outputFolder: String, fileName: String) {
+        print("hello - screenshot")
+
+        takeScreenshot(identifier: identifier, path: outputFolder + fileName)
+    }
+
+    func takeScreenshot(identifier: String, path: String) {
+        shell.execute(
+            idevicescreenshot(deviceSerial: identifier, command: path)
+        )
     }
 
     func recordVideo(identifier _: String, path _: String) {}
@@ -73,5 +81,9 @@ final class IDeviceInterface: DeviceInterface {
 
     private func ideviceInfo(deviceSerial: String, command: String) -> String {
         return "ideviceinfo -u \(deviceSerial) \(command)"
+    }
+
+    private func idevicescreenshot(deviceSerial: String, command: String) -> String {
+        return "idevicescreenshot -u \(deviceSerial) " + command
     }
 }

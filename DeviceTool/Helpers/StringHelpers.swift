@@ -8,6 +8,7 @@ extension String {
     func toFilenameString() -> String {
         return lowercased()
             .replacingOccurrences(of: " ", with: "-")
+            .replacingOccurrences(of: ",", with: "-")
     }
 
     func trim() -> String {

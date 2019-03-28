@@ -24,6 +24,8 @@ final class ADBWrapperMock: DeviceInterface {
 
     public func reboot(to _: ADBRebootType, identifier _: String) {}
 
+    func takeScreenshot(identifier _: String, outputFolder _: String, fileName _: String) {}
+
     func takeScreenshot(identifier _: String, path _: String) {}
 
     func pull(identifier _: String, fromPath _: String, toPath _: String) {}

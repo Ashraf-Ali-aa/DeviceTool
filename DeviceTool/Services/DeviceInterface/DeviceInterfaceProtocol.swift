@@ -15,6 +15,8 @@ protocol DeviceInterface {
 
     func reboot(identifier: String)
 
+    func takeScreenshot(identifier: String, outputFolder: String, fileName: String)
+
     func takeScreenshot(identifier: String, path: String)
 
     func recordVideo(identifier: String, path: String)

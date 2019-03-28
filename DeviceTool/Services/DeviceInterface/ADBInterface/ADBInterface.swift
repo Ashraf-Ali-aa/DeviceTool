@@ -61,6 +61,22 @@ final class ADBInterface: DeviceInterface {
         )
     }
 
+    public func takeScreenshot(identifier: String, outputFolder: String, fileName: String) {
+        takeScreenshot(
+            identifier: identifier,
+            path: fileName
+        )
+        pull(
+            identifier: identifier,
+            fromPath: fileName,
+            toPath: outputFolder
+        )
+        remove(
+            identifier: identifier,
+            path: fileName
+        )
+    }
+
     public func takeScreenshot(identifier: String, path: String) {
         shell.execute(
             adbTool(deviceSerial: identifier, shellCommand: "screencap -p \(path)")
