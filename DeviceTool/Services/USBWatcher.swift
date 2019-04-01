@@ -28,11 +28,13 @@ public class USBWatcher {
         func handleNotification(instance: UnsafeMutableRawPointer?, _ iterator: io_iterator_t) {
             let watcher = Unmanaged<USBWatcher>.fromOpaque(instance!).takeUnretainedValue()
             let handler: ((io_iterator_t) -> Void)?
+
             switch iterator {
             case watcher.addedIterator: handler = watcher.delegate?.deviceAdded
             case watcher.removedIterator: handler = watcher.delegate?.deviceRemoved
             default: assertionFailure("received unexpected IOIterator"); return
             }
+
             while case let device = IOIteratorNext(iterator), device != IO_OBJECT_NULL {
                 handler?(device)
                 IOObjectRelease(device)
@@ -87,7 +89,7 @@ extension io_object_t {
     }
 
     func isSupported() -> Bool {
-        let supportedPlatforms = ["andoird", "ios", "ipad", "iphone"]
+        let supportedPlatforms = ["android", "ios", "ipad", "iphone"]
 
         return supportedPlatforms.contains(name().lowercased())
     }

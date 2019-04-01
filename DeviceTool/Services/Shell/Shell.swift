@@ -42,6 +42,11 @@ final class Shell: ShellType {
         task.waitUntilExit()
         let status = task.terminationStatus
 
+        if error.allSatisfy({ !$0.isEmpty }) || status != 0 {
+            print(output)
+            print(error)
+        }
+
         return (output, error, status)
     }
 }

@@ -21,6 +21,7 @@ enum DeviceType: String {
 
 extension DeviceType {
     init(characteristics: String) {
+        let characteristics = characteristics.lowercased()
         if characteristics.contains("watch") || characteristics.contains("iwatch") {
             self = .watch
         } else if characteristics.contains("tablet") || characteristics.contains("ipad") {

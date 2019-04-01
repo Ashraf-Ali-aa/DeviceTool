@@ -42,7 +42,7 @@ final class ADBInterface: DeviceInterface {
             deviceInterface: .adb,
             deviceName: properties["ro.product.model"],
             brand: DeviceBrand(rawValue: properties["ro.product.brand"] ?? ""),
-            model: properties["ro.product.model"],
+            model: getDevice(name: properties["ro.product.model"] ?? ""),
             osVersion: properties["ro.build.version.release"],
             manufacturer: properties["ro.product.model"],
             properties: properties,
@@ -159,5 +159,14 @@ final class ADBInterface: DeviceInterface {
 
     private func adbTool(deviceSerial: String, shellCommand: String) -> String {
         return adbTool(deviceSerial: deviceSerial, command: "shell \(shellCommand)")
+    }
+}
+
+extension ADBInterface {
+    func getDevice(name: String) -> String {
+        let data = ServiceLocator.shared.deviceNames
+        let item = data?.filter({ $0.identifier == name.lowercased() }).first
+
+        return item?.name ?? name
     }
 }

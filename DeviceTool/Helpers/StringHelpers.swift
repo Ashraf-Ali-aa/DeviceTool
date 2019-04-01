@@ -7,8 +7,10 @@ import Foundation
 extension String {
     func toFilenameString() -> String {
         return lowercased()
-            .replacingOccurrences(of: " ", with: "-")
-            .replacingOccurrences(of: ",", with: "-")
+            .components(separatedBy: .whitespacesAndNewlines)
+            .flatMap { $0.components(separatedBy: .punctuationCharacters) }
+            .filter { !$0.isEmpty }
+            .joined(separator: "_")
     }
 
     func trim() -> String {

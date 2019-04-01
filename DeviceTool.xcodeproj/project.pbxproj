@@ -43,6 +43,7 @@
 		4CEFBA8221CD24D800079CD9 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEFBA8121CD24D800079CD9 /* SettingsViewModel.swift */; };
 		C3096730223F9EFA00E08F67 /* iDeviceInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C309672F223F9EFA00E08F67 /* iDeviceInterface.swift */; };
 		C3096732223F9F6000E08F67 /* SimulatorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3096731223F9F6000E08F67 /* SimulatorInterface.swift */; };
+		C368130E224E638D00BDF812 /* devices.json in Resources */ = {isa = PBXBuildFile; fileRef = C368130D224E638D00BDF812 /* devices.json */; };
 		C382501522491B1700BF6067 /* DeviceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C382501422491B1700BF6067 /* DeviceController.swift */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +100,7 @@
 		C309672F223F9EFA00E08F67 /* iDeviceInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iDeviceInterface.swift; sourceTree = "<group>"; };
 		C3096731223F9F6000E08F67 /* SimulatorInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorInterface.swift; sourceTree = "<group>"; };
 		C30967DC223FE26500E08F67 /* DeviceToolPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = DeviceToolPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		C368130D224E638D00BDF812 /* devices.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = devices.json; path = ../../../../../Downloads/devices.json; sourceTree = "<group>"; };
 		C382501422491B1700BF6067 /* DeviceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,6 +163,7 @@
 		4C22E0FF21BB95C1008C8543 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C368130D224E638D00BDF812 /* devices.json */,
 				4C8AEF3E21B3CBDB00AC9202 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -453,6 +456,7 @@
 				4C22E0F221BA5BEB008C8543 /* ScreenshotCell.xib in Resources */,
 				4C4C7D0021AAED1F0002127F /* Main.storyboard in Resources */,
 				4C22E0ED21BA56B0008C8543 /* RebootCell.xib in Resources */,
+				C368130E224E638D00BDF812 /* devices.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

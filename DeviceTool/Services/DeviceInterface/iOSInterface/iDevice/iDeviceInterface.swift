@@ -13,12 +13,11 @@ final class IDeviceInterface: DeviceInterface {
     }
 
     func listDeviceIdentifiers() -> [String] {
-        print(shell.execute("idevice_id -l").output.filter({ !$0.isEmpty }))
         return shell.execute("idevice_id -l").output.filter({ !$0.isEmpty })
     }
 
     func getDevice(forId identifier: String) -> Device {
-        var properties = getDeviceProperties(serial: identifier)
+        let properties = getDeviceProperties(serial: identifier)
 
         return Device(
             identifier: identifier,
@@ -26,7 +25,7 @@ final class IDeviceInterface: DeviceInterface {
             deviceInterface: .iDevice,
             deviceName: properties["DeviceName"],
             brand: .apple,
-            model: properties["ProductType"],
+            model: getDevice(name: properties["ProductType"] ?? ""),
             osVersion: properties["ProductVersion"],
             manufacturer: "apple",
             properties: properties,
@@ -34,7 +33,7 @@ final class IDeviceInterface: DeviceInterface {
             hardwareType: .physical,
             platform: .ios,
             resolution: (0, 0),
-            state: .unknown
+            state: .online
         )
     }
 
@@ -43,8 +42,6 @@ final class IDeviceInterface: DeviceInterface {
     func reboot(to _: ADBRebootType, identifier _: String) {}
 
     func takeScreenshot(identifier: String, outputFolder: String, fileName: String) {
-        print("hello - screenshot")
-
         takeScreenshot(identifier: identifier, path: outputFolder + fileName)
     }
 
@@ -99,5 +96,14 @@ final class IDeviceInterface: DeviceInterface {
 
     private func ideviceinstaller(deviceSerial: String, command: String) -> String {
         return "ideviceinstaller -u \(deviceSerial) " + command
+    }
+}
+
+extension IDeviceInterface {
+    func getDevice(name: String) -> String {
+        let data = ServiceLocator.shared.deviceNames
+        let item = data?.filter({ $0.identifier == name.lowercased() }).first
+
+        return item?.name ?? name
     }
 }
