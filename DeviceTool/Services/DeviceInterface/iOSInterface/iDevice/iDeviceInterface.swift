@@ -13,7 +13,7 @@ final class IDeviceInterface: DeviceInterface {
     }
 
     func listDeviceIdentifiers() -> [String] {
-        return shell.execute("idevice_id -l").output.filter({ !$0.isEmpty })
+        return shell.execute(pathLocation + "idevice_id -l").output.filter({ !$0.isEmpty })
     }
 
     func getDevice(forId identifier: String) -> Device {
@@ -87,15 +87,19 @@ final class IDeviceInterface: DeviceInterface {
     }
 
     private func ideviceInfo(deviceSerial: String, command: String) -> String {
-        return "ideviceinfo -u \(deviceSerial) \(command)"
+        return pathLocation + "ideviceinfo -u \(deviceSerial) \(command)"
     }
 
     private func idevicescreenshot(deviceSerial: String, command: String) -> String {
-        return "idevicescreenshot -u \(deviceSerial) " + command
+        return pathLocation + "idevicescreenshot -u \(deviceSerial) " + command
     }
 
     private func ideviceinstaller(deviceSerial: String, command: String) -> String {
-        return "ideviceinstaller -u \(deviceSerial) " + command
+        return pathLocation + "ideviceinstaller -u \(deviceSerial) " + command
+    }
+
+    private var pathLocation: String {
+        return "/usr/local/bin/"
     }
 }
 
