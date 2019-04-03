@@ -1,61 +1,95 @@
 import Foundation
 
-protocol ShellType {
-    @discardableResult
-    func execute(_ command: String) -> (output: [String], error: [String], exitCode: Int32)
-}
+final class Shell {
+    var task: Process!
 
-final class Shell: ShellType {
-    @discardableResult
-    public func execute(_ command: String) -> (output: [String], error: [String], exitCode: Int32) {
-        print(command)
-        return runCommand(cmd: "/bin/bash", args: "-c", command)
+    func stop() {
+        task.terminate()
     }
 
-    @discardableResult
-    private func runCommand(cmd: String, args: String...) -> (output: [String], error: [String], exitCode: Int32) {
+    func execute(command: String..., complete: @escaping (_ output: [String], _ error: [String], _ exitCode: Int32) -> Void) -> [String] {
         var output: [String] = []
         var error: [String] = []
 
-        let task = Process()
-        task.launchPath = cmd
-        task.arguments = args
+        task = Process()
+        let pipe = Pipe()
 
-        let outpipe = Pipe()
-        task.standardOutput = outpipe
-        let errpipe = Pipe()
-        task.standardError = errpipe
+        task.launchPath = "/bin/bash"
+
+        task.arguments = ["-c"] + command
+
+        task.standardOutput = pipe
+        task.standardError = pipe
 
         task.launch()
 
-        let outdata = outpipe.fileHandleForReading.readDataToEndOfFile()
-        if var string = String(data: outdata, encoding: .utf8) {
-            string = string.trimmingCharacters(in: .newlines)
-            output = string.components(separatedBy: "\n")
+        pipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
+
+        NotificationCenter.default.addObserver(
+            forName: NSNotification.Name.NSFileHandleDataAvailable,
+            object: pipe.fileHandleForReading, queue: nil
+        ) { (_) -> Void in
+            DispatchQueue.global(qos: .default).async(execute: { () -> Void in
+
+                let outdata = pipe.fileHandleForReading.readDataToEndOfFile()
+                if var string = String(data: outdata, encoding: .utf8) {
+                    string = string.trimmingCharacters(in: .newlines)
+                    output = string.components(separatedBy: "\n")
+                }
+
+                let errdata = pipe.fileHandleForReading.readDataToEndOfFile()
+                if var string = String(data: errdata, encoding: .utf8) {
+                    string = string.trimmingCharacters(in: .newlines)
+                    error = string.components(separatedBy: "\n")
+                }
+
+                let status = self.task.terminationStatus
+                DispatchQueue.main.async(execute: { () -> Void in
+                    self.postNotification(message: output, channel: .scriptOutput)
+                    complete(output, error, status)
+                })
+            })
         }
+        return output
+    }
 
-        let errdata = errpipe.fileHandleForReading.readDataToEndOfFile()
-        if var string = String(data: errdata, encoding: .utf8) {
-            string = string.trimmingCharacters(in: .newlines)
-            error = string.components(separatedBy: "\n")
+    private func postNotification(message: [String], channel: ChannelType) {
+        NotificationCenter.default.post(
+            name: Notification.Name(rawValue: channel.output),
+            object: message.joined(separator: "\n")
+        )
+    }
+}
+enum ChannelType {
+    case command
+    case scriptOutput
+    case verbose
+
+    var output: String {
+        switch self {
+        case .command: return "dt.command"
+        case .scriptOutput: return "dt.scriptOutput"
+        case .verbose: return "dt.verbose"
         }
-
-        task.waitUntilExit()
-        let status = task.terminationStatus
-
-        return (output, error, status)
     }
 }
 
 let shell = Shell()
 
-let commandOutput = shell.execute("/usr/local/bin/ideviceinfo")
+let item = shell.execute(command: "/usr/local/bin/ideviceinfo") { output, _, _ in
 
-let propertyDictionary = commandOutput.output.map { $0.components(separatedBy: ":") }.filter { !$0[0].isEmpty }.reduce(into: [String: String]()) { dictionary, pair in
-    if pair.count == 2 {
-        let value = pair.map { $0.trimmingCharacters(in: .whitespaces) }
-        dictionary[value[0]] = value[1]
+}
+
+extension NotificationCenter {
+    func get(channel: ChannelType) {
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: channel.output), object: nil, queue: nil) { (notification) -> Void in
+
+            DispatchQueue.main.async(execute: { () -> Void in
+                print(notification)
+            })
+        }
     }
 }
 
-print(propertyDictionary)
+NotificationCenter.default.get(channel: .scriptOutput)
+
