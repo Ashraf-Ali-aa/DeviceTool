@@ -9,6 +9,8 @@ final class ServiceLocator {
 
     let shell = Shell()
     let defaults = Defaults()
+
+    let installer: Installer
     let deviceController: DeviceController
 
     let sidebarViewModel: SideBarViewModel
@@ -23,6 +25,7 @@ final class ServiceLocator {
     var deviceNames: [JSONReportElement]?
 
     private init() {
+        installer = Installer()
         deviceController = DeviceController()
 
         sidebarViewModel = SideBarViewModel(deviceController: deviceController)

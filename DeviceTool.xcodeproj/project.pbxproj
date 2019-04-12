@@ -43,6 +43,7 @@
 		4CEFBA8221CD24D800079CD9 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEFBA8121CD24D800079CD9 /* SettingsViewModel.swift */; };
 		C3096730223F9EFA00E08F67 /* iDeviceInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C309672F223F9EFA00E08F67 /* iDeviceInterface.swift */; };
 		C3096732223F9F6000E08F67 /* SimulatorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3096731223F9F6000E08F67 /* SimulatorInterface.swift */; };
+		C358C6BE2260CC5E00BA25BB /* Installer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C358C6BD2260CC5E00BA25BB /* Installer.swift */; };
 		C368130E224E638D00BDF812 /* devices.json in Resources */ = {isa = PBXBuildFile; fileRef = C368130D224E638D00BDF812 /* devices.json */; };
 		C382501522491B1700BF6067 /* DeviceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C382501422491B1700BF6067 /* DeviceController.swift */; };
 /* End PBXBuildFile section */
@@ -100,6 +101,7 @@
 		C309672F223F9EFA00E08F67 /* iDeviceInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iDeviceInterface.swift; sourceTree = "<group>"; };
 		C3096731223F9F6000E08F67 /* SimulatorInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorInterface.swift; sourceTree = "<group>"; };
 		C30967DC223FE26500E08F67 /* DeviceToolPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = DeviceToolPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		C358C6BD2260CC5E00BA25BB /* Installer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Installer.swift; sourceTree = "<group>"; };
 		C368130D224E638D00BDF812 /* devices.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = devices.json; path = ../../../../../Downloads/devices.json; sourceTree = "<group>"; };
 		C382501422491B1700BF6067 /* DeviceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -234,6 +236,7 @@
 		4C4C7D1621AB2E0C0002127F /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				C358C6BC2260CC3C00BA25BB /* Installer */,
 				C30966F3223F821700E08F67 /* DeviceInterface */,
 				4C4575B721F1DCF00069449D /* Routing */,
 				4C4C7D1B21AB32C30002127F /* Shell */,
@@ -362,6 +365,14 @@
 				C30967DC223FE26500E08F67 /* DeviceToolPlayground.playground */,
 			);
 			path = Playground;
+			sourceTree = "<group>";
+		};
+		C358C6BC2260CC3C00BA25BB /* Installer */ = {
+			isa = PBXGroup;
+			children = (
+				C358C6BD2260CC5E00BA25BB /* Installer.swift */,
+			);
+			path = Installer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -518,6 +529,7 @@
 				4CEFBA8021CD0F8200079CD9 /* SettingsViewController.swift in Sources */,
 				4CC69B7F21F0FAA30003C92E /* ServiceLocator.swift in Sources */,
 				4C22E0F821BA9289008C8543 /* ScreenshotCellViewModel.swift in Sources */,
+				C358C6BE2260CC5E00BA25BB /* Installer.swift in Sources */,
 				4C8AEF2C21AF071700AC9202 /* Device.swift in Sources */,
 				4C4C7D1A21AB312B0002127F /* ADBInterface.swift in Sources */,
 				4C22E0FC21BAE7FD008C8543 /* DateHelpers.swift in Sources */,
