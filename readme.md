@@ -31,6 +31,7 @@ The application has no external dependencies, so just clone and build it with la
 
 ## Credits
 
+
 The project was developed by Michail Ovchinnikov.
 
 Icons by [Icons8](https://icons8.com).
